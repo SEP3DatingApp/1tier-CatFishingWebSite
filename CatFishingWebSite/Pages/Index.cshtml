@@ -4,7 +4,48 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CatFishIndex</title>
+    <link href="../wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="../wwwroot/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><p>some photo</p><p>some photo @DateTime.Now</p><p>some photoooooooooooooooooooooooooooo </p><p>some photo</p><p>some photo</p><p>some photo</p><p>some photo</p><p>some photo</p></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <form method="post">
+                    <h4>Log in</h4>
+
+                    <div class="form-group">
+                        <label asp-for="user.UserID" class="control-label"></label>
+                        <input type="number" asp-for="user.UserID" class="form-control" />
+                        <span asp-validation-for="user.UserID" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="user.Password" class="control-label"></label>
+                        <input type="password" asp-for="user.Password" class="form-control"/>
+                        <span asp-validation-for="user.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Start Dating!" class="btn btn-primary" />
+                    </div>
+
+                    </form>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

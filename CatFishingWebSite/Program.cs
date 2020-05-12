@@ -12,7 +12,9 @@ namespace CatFishingWebSite
     public class Program
     {
         public static void Main(string[] args)
+            
         {
+            Console.WriteLine("Client is running now");
             CreateHostBuilder(args).Build().Run();
         }
 
