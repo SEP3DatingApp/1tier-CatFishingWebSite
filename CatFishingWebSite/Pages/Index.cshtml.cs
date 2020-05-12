@@ -37,7 +37,7 @@ namespace CatFishingWebSite.Pages
             }
            
 
-            return RedirectToPage("Signup/index");
+            return RedirectToPage("Match/index");
         }
     }
 }

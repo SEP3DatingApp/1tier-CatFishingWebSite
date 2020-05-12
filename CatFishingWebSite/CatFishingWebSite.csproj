@@ -9,7 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Match\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
