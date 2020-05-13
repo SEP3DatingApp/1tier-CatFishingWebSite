@@ -17,6 +17,7 @@ namespace CatFishingWebSite.Pages
         
         private readonly ILogger<IndexModel> _logger;
 
+        public string errorMessage;
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
@@ -28,11 +29,13 @@ namespace CatFishingWebSite.Pages
         }
         public async Task<IActionResult> OnPostAsync()
         {
-            Console.WriteLine("onpost for login");
+            Console.WriteLine("onpost for login"); 
+            Console.WriteLine("user name: "+user.Username);
             Console.WriteLine(user.Password);
-            Console.WriteLine(user.UserID);
+           
             if (!ModelState.IsValid)
             {
+                errorMessage = "invalid"; 
                 return Page();
             }
            

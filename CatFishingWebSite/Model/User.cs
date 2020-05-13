@@ -12,18 +12,29 @@ namespace CatFishingWebSite.Model
         [Required]
         [Range(1, 99999999999)]
         public int UserID { get; set; }
-        public String Username { get; set; }
         [Required]
-        public String Password { get; set; }
+        public string Username { get; set; }
+        [Required]
+        public string Password { get; set; }
 
-        public String Usertype { get; set; }
+        public string Usertype { get; set; }
     }
 
     public class Fisher : User
     {
-        public String Email { get; set; }
+        public string Email { get; set; }
 
-       
+       public string gender { get; set; }
+
+        public string sexpref { get; set; }
+
+        public int age { get; set; }
+
+        public bool isActive { get; set; }
+
+        public string name { get; set; }
+
+        public string description { get; set; }
 
     }
 }
