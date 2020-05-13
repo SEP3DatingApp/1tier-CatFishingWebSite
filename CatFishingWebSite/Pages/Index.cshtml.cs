@@ -36,7 +36,7 @@ namespace CatFishingWebSite.Pages
             if (user.Username.Equals("1") && user.Password.Equals("1"))
             {
                 
-                return RedirectToPage("Match/index");
+                return RedirectToPage("Match/index/"+user.Username);
                 
             }else
            errorMessage = "invalid"; 
