@@ -7,6 +7,6 @@ namespace CatFishingWebSite.Services
 {
     interface IWebService
     {
-        public  bool IsLogin(string Username, string Password);
+      
     }
 }
