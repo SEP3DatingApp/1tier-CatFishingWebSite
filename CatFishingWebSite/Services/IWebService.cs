@@ -1,11 +1,11 @@
-﻿using System;
+﻿using CatFishingWebSite.Model;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CatFishingWebSite.Services
 {
     interface IWebService
     {
+        List<User> getAllUsers();
+        User GetUser(string username,string password);
     }
 }
