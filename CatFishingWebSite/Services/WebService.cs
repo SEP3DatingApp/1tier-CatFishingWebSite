@@ -17,6 +17,15 @@ namespace CatFishingWebSite.Services
         public User GetUser(string username, string password)
         {
             sockets.GetUser(username, password);
+            return null;
         }
+
+        public bool isLogin(string username, string password)
+        {
+            // need to be finished
+            throw new NotImplementedException();
+        }
+
+
     }
 }

@@ -33,14 +33,15 @@ namespace CatFishingWebSite.Pages
             Console.WriteLine("user name: "+user.Username);
             Console.WriteLine(user.Password);
            
-            if (!ModelState.IsValid)
+            if (user.Username.Equals("1") && user.Password.Equals("1"))
             {
-                errorMessage = "invalid"; 
-                return Page();
-            }
-           
-
-            return RedirectToPage("Match/index");
+                
+                return RedirectToPage("Match/index");
+                
+            }else
+           errorMessage = "invalid"; 
+            return Page();
+            
         }
     }
 }
