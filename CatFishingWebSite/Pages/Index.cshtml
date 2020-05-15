@@ -9,17 +9,59 @@
 <head>
     <meta charset="utf-8">
     <title>CatFishIndex</title>
+    <link href="~/css/site.css" rel="stylesheet" />
     <link href="../wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="../wwwroot/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <style>
+        /* Make the image fully responsive */
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6"><p>some photo</p><p>some photo @DateTime.Now</p><p>some photoooooooooooooooooooooooooooo </p><p>some photo</p><p>some photo</p><p>some photo</p><p>some photo</p><p>some photo</p></div>
+            <div class="col-md-6">
+
+                <div id="weclome" class="carousel slide" data-ride="carousel">
+
+                  
+                    <ul class="carousel-indicators">
+                        <li data-target="#welcome" data-slide-to="0" class="active"></li>
+                        <li data-target="#welcome" data-slide-to="1"></li>
+                        <li data-target="#welcome" data-slide-to="2"></li>
+                    </ul>
+
+                   
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="~/images/dateimg3.jfif">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/dateimg4.jfif">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/dateimg5.jfif">
+                        </div>
+                    </div>
+
+                   
+                    <a class="carousel-control-prev" href="#welcome" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#welcome" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+
+                </div>
+
+            </div>
             <div class="col-md-1"></div>
             <div class="col-md-5">
                 <form method="post">
