@@ -9,7 +9,7 @@ namespace CatFishingWebSite.Model
     public class User
     {
 
-        [Required]
+        
         [Range(1, 99999999999)]
         public int UserID { get; set; }
         [Required]
@@ -18,15 +18,17 @@ namespace CatFishingWebSite.Model
         public string Password { get; set; }
 
         public string Usertype { get; set; }
+
+      
     }
 
     public class Fisher : User
     {
         public string Email { get; set; }
+        [StringLength(1)]
+        public char gender { get; set; }
 
-       public string gender { get; set; }
-
-        public string sexpref { get; set; }
+        public char sexpref { get; set; }
 
         public int age { get; set; }
 

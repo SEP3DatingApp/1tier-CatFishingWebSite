@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\AccountManage\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

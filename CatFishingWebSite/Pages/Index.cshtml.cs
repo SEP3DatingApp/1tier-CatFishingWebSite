@@ -12,11 +12,13 @@ namespace CatFishingWebSite.Pages
     public class IndexModel : PageModel
 
     {
+
         [BindProperty]
         public User user { get; set; }
         
         private readonly ILogger<IndexModel> _logger;
 
+        private bool isLogin;
         public string errorMessage;
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -33,15 +35,17 @@ namespace CatFishingWebSite.Pages
             Console.WriteLine("user name: "+user.Username);
             Console.WriteLine(user.Password);
            
-            if (user.Username.Equals("1") && user.Password.Equals("1"))
+            if (user.Username.Equals("username") && user.Password.Equals("password"))
             {
                 
                 return RedirectToPage("Match/index/"+user.Username);
                 
             }else
-           errorMessage = "invalid"; 
+           errorMessage = "User Name or Password is incorrect"; 
             return Page();
             
         }
+
+     
     }
 }
