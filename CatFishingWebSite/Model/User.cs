@@ -18,7 +18,7 @@ namespace CatFishingWebSite.Model
         public string Password { get; set; }
 
         public string Usertype { get; set; }
-
+      
       
     }
 

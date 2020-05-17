@@ -9,6 +9,9 @@ namespace CatFishingWebSite.Services
     public class WebService : IWebService
     {
         ISockets sockets = new Sockets("127.0.0.1", 5000);
+
+    
+
         public List<User> getAllUsers()
         {
             throw new NotImplementedException();
@@ -26,6 +29,14 @@ namespace CatFishingWebSite.Services
             throw new NotImplementedException();
         }
 
-
+        public bool isUniqueUserName(string username)
+        {
+            throw new NotImplementedException();
+        } 
+        
+        public void createUser(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

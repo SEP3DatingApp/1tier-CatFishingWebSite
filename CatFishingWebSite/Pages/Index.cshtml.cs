@@ -46,6 +46,11 @@ namespace CatFishingWebSite.Pages
             
         }
 
+        public string hello()
+        {
+            return "hello";
+        }
+
      
     }
 }

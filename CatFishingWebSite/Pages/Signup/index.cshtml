@@ -12,23 +12,23 @@
         <!--Sign up -->
         <div class="col-md-4">
             <form method="post">
-                <fieldset>
+                @*<fieldset>
                     <legend> Upload Image </legend>
                     <label for="Image">Image</label>
                     <input type="file" name="Image" />
 
                     <!-- <input type="submit" value="Upload" />-->
-                </fieldset>
+               </fieldset>*@
                 <div class="form-group">
-                    <label asp-for="fisher.name" class="control-label"></label>
-                    <input asp-for="fisher.name" class="form-control" />
-                    <span asp-validation-for="fisher.name" class="text-danger"></span>
+                    <label asp-for="user.Username" class="control-label"></label>
+                    <input asp-for="user.Username" class="form-control" />
+                    <span asp-validation-for="user.Username" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="fisher.gender" class="control-label"></label>
-                    <input asp-for="fisher.gender" class="form-control" />
-                    <span asp-validation-for="fisher.gender" class="text-danger"></span>
+                    <label asp-for="user.Password" class="control-label"></label>
+                    <input asp-for="user.Password" class="form-control" />
+                    <span asp-validation-for="user.Password" class="text-danger"></span>
                 </div>
             </form>
         </div>

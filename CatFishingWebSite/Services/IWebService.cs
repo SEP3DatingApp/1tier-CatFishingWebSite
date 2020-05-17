@@ -9,8 +9,16 @@ namespace CatFishingWebSite.Services
         List<User> getAllUsers();
         User GetUser(string username,string password);
 
+        // login
         bool isLogin(string username, string password);
 
 
+        // register
+        void createUser(string username, string password);
+
+        bool isUniqueUserName(string username);
+
+
+        // edit account
     }
 }

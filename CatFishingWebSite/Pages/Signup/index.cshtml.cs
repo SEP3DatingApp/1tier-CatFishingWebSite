@@ -10,7 +10,8 @@ namespace CatFishingWebSite.Pages.Signup
 {
     public class indexModel : PageModel
     {
-        public Fisher fisher { get; set; }
+        [BindProperty]
+        public User user { get; set; }
         public void OnGet()
         {
              
