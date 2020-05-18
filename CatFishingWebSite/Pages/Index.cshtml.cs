@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using CatFishingWebSite.Model;
+using CatFishingWebSite.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -12,6 +14,9 @@ namespace CatFishingWebSite.Pages
     public class IndexModel : PageModel
 
     {
+       // private static readonly IWebService webService;
+        private static readonly DummyServer dummy = new DummyServer();
+         
 
         [BindProperty]
         public User user { get; set; }
@@ -31,11 +36,14 @@ namespace CatFishingWebSite.Pages
         }
         public async Task<IActionResult> OnPostAsync()
         {
-            Console.WriteLine("onpost for login"); 
+            Debug.WriteLine("onpost for login"); 
             Console.WriteLine("user name: "+user.Username);
             Console.WriteLine(user.Password);
-           
-            if (user.Username.Equals("username") && user.Password.Equals("password"))
+          
+         
+         
+           // isLogin = webService.isLogin(user.Username, user.Password);
+            if (user.Username.Equals("dummy") && user.Password.Equals("password"))
             {
                 
                 return RedirectToPage("Match/index/"+user.Username);
@@ -46,11 +54,11 @@ namespace CatFishingWebSite.Pages
             
         }
 
-        public string hello()
+        public  string getUserName()
         {
-            return "hello";
+
+            return user.Username;
         }
 
-     
     }
 }

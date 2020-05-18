@@ -1,4 +1,5 @@
 ﻿using CatFishingWebSite.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,6 +8,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace CatFishingWebSite.Services
 {
@@ -16,7 +18,7 @@ namespace CatFishingWebSite.Services
 
         public Sockets(string ipAdressOfServer,int port)
         {
-            GetUser("a","opwd");
+           
             Debug.WriteLine("Trying To connect to the server");
             try
             {
@@ -43,15 +45,25 @@ namespace CatFishingWebSite.Services
             byte[] byData = Encoding.ASCII.GetBytes(json + ";");
             client.Send(byData);
             Debug.Write("data have been sent");
+            //？？
             json = Encoding.ASCII.GetString(byData);
             Debug.WriteLine(json);
-            //var jjs = JsonSerializer.Deserialize(json);
-            User user = new User();
-            {
-                
-            }
 
-            return null;
+
+            // receive data：
+            string recvStr = "";
+            byte[] recvBytes = new byte[1024];
+            int bytes;
+            bytes = client.Receive(recvBytes, recvBytes.Length, 0);
+            recvStr += Encoding.ASCII.GetString(recvBytes, 0, bytes);
+            //var jjs = JsonSerializer.Deserialize(json);
+            //User user = new User();
+            //{
+
+            //}
+           User user = JsonConvert.DeserializeObject<User>(recvStr);
+           
+            return user;
             //json = JsonSerializer.Deserialize(byData.Enc)
 
         }

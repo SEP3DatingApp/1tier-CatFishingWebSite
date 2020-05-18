@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace CatFishingWebSite.Services
 {
+    [Serializable]
     public class Request
     {
         public RequestTypes Type { get; set; }

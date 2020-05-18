@@ -9,7 +9,7 @@ namespace CatFishingWebSite.Services
         List<User> getAllUsers();
         User GetUser(string username,string password);
 
-        // login
+        // login 1st sprint
         bool isLogin(string username, string password);
 
 
@@ -20,5 +20,6 @@ namespace CatFishingWebSite.Services
 
 
         // edit account
+        Fisher GetFisherByName(string username);
     }
 }

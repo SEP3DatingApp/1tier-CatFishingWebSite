@@ -13,12 +13,12 @@
         <div class="col-md-4">
             <form method="post">
                 @*<fieldset>
-                    <legend> Upload Image </legend>
-                    <label for="Image">Image</label>
-                    <input type="file" name="Image" />
+             <legend> Upload Image </legend>
+             <label for="Image">Image</label>
+             <input type="file" name="Image" />
 
-                    <!-- <input type="submit" value="Upload" />-->
-               </fieldset>*@
+             <!-- <input type="submit" value="Upload" />-->
+        </fieldset>*@
                 <div class="form-group">
                     <label asp-for="user.Username" class="control-label"></label>
                     <input asp-for="user.Username" class="form-control" />
@@ -29,6 +29,20 @@
                     <label asp-for="user.Password" class="control-label"></label>
                     <input asp-for="user.Password" class="form-control" />
                     <span asp-validation-for="user.Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="passwordAgain" class="control-label">Password again </label>
+                    <input asp-for="passwordAgain" class="form-control" />
+                    <span asp-validation-for="passwordAgain" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <p></p>
+                    <span class="text-danger">@Model.errorMessage</span>
+                    <input type="submit" value="Sign up now" class="btn btn-primary" />
+
+                    <h6>@Model.successMessage</h6>
                 </div>
             </form>
         </div>

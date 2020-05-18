@@ -25,8 +25,13 @@ namespace CatFishingWebSite.Services
 
         public bool isLogin(string username, string password)
         {
-            // need to be finished
-            throw new NotImplementedException();
+            User user = sockets.GetUser(username, password);
+           if (user != null && username ==user.Username && password == user.Password )
+            {
+                return true;
+            }
+            return false;
+             
         }
 
         public bool isUniqueUserName(string username)
@@ -36,6 +41,12 @@ namespace CatFishingWebSite.Services
         
         public void createUser(string username, string password)
         {
+            throw new NotImplementedException();
+        }
+
+        public Fisher GetFisherByName(string username)
+        {
+            
             throw new NotImplementedException();
         }
     }

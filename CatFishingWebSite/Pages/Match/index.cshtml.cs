@@ -12,13 +12,11 @@ namespace CatFishingWebSite.Pages.Match
     { 
         
         public User user { get;set; }
-        //public void OnGet(int ? username)
-        //  {
-        //      if(username == null)
-        //      {
-
-        //    }
-        // }
+        public string Title { get; set; }
+        public void OnGet(string ? username)
+        { 
+        
+        }
         String message;
         public async Task<IActionResult> OnGetAsync(string ? username)
         {

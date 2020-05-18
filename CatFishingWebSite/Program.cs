@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using CatFishingWebSite.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -14,6 +16,7 @@ namespace CatFishingWebSite
         public static void Main(string[] args)
             
         {
+        
             Console.WriteLine("Client is running now");
             CreateHostBuilder(args).Build().Run();
         }
