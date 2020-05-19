@@ -14,7 +14,7 @@ namespace CatFishingWebSite.Pages
     public class IndexModel : PageModel
 
     {
-       // private static readonly IWebService webService;
+       private static readonly IWebService webService;
         private static readonly DummyServer dummy = new DummyServer();
          
 
@@ -42,11 +42,11 @@ namespace CatFishingWebSite.Pages
           
          
          
-           // isLogin = webService.isLogin(user.Username, user.Password);
-            if (user.Username.Equals("dummy") && user.Password.Equals("password"))
+           isLogin = webService.IsLogin(user.Username, user.Password);
+            if (isLogin)
             {
                 
-                return RedirectToPage("Match/index/"+user.Username);
+                return RedirectToPage("Match/" + user.Username);
                 
             }else
            errorMessage = "User Name or Password is incorrect"; 

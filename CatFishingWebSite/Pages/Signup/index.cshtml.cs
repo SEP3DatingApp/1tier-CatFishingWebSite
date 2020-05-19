@@ -30,7 +30,7 @@ namespace CatFishingWebSite.Pages.Signup
         public async Task<IActionResult> OnPostAsync()
         {
             
-            if( ! webService.isUniqueUserName(user.Username))
+            if( ! webService.IsUniqueUserName(user.Username))
             {
                 errorMessage = "Username already exists";
                 return Page();
@@ -49,7 +49,7 @@ namespace CatFishingWebSite.Pages.Signup
                 return Page();
             }
             successMessage = "Sign up now...";
-            webService.createUser(user.Username, user.Password);
+            webService.CreateUser(user.Username, user.Password);
             Console.WriteLine("Create a new account");
             successMessage = "Sign up successfully ,Back to login page";
             Thread.Sleep(3000);

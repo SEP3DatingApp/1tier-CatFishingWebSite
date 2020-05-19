@@ -10,13 +10,13 @@ namespace CatFishingWebSite.Services
         User GetUser(string username,string password);
 
         // login 1st sprint
-        bool isLogin(string username, string password);
+        bool IsLogin(string username, string password);
 
 
         // register
-        void createUser(string username, string password);
+        void CreateUser(string username, string password);
 
-        bool isUniqueUserName(string username);
+        bool IsUniqueUserName(string username);
 
 
         // edit account

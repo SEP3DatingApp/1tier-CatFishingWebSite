@@ -23,7 +23,7 @@ namespace CatFishingWebSite.Services
             return null;
         }
 
-        public bool isLogin(string username, string password)
+        public bool IsLogin(string username, string password)
         {
             User user = sockets.GetUser(username, password);
            if (user != null && username ==user.Username && password == user.Password )
@@ -34,12 +34,12 @@ namespace CatFishingWebSite.Services
              
         }
 
-        public bool isUniqueUserName(string username)
+        public bool IsUniqueUserName(string username)
         {
             throw new NotImplementedException();
         } 
         
-        public void createUser(string username, string password)
+        public void CreateUser(string username, string password)
         {
             throw new NotImplementedException();
         }

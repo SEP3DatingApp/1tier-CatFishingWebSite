@@ -13,10 +13,10 @@ namespace CatFishingWebSite.Pages.Match
         
         public User user { get;set; }
         public string Title { get; set; }
-        public void OnGet(string ? username)
-        { 
+        //public void OnGet(string ? username)
+        //{ 
         
-        }
+        //}
         String message;
         public async Task<IActionResult> OnGetAsync(string ? username)
         {
@@ -27,6 +27,7 @@ namespace CatFishingWebSite.Pages.Match
             {
                 return NotFound();
             }
+            Title = username;
 
             
  

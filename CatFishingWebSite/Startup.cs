@@ -26,7 +26,7 @@ namespace CatFishingWebSite
         {
             services.AddRazorPages();
             //TODO: (HZ)comment below is for testing web page
-            //services.AddSingleton(new Sockets("127.0.0.1", 5000));
+            services.AddSingleton(new Sockets("192.168.43.8", 5000));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

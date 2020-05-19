@@ -8,7 +8,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using JsonSerializer = System.Text.Json.JsonSerializer;
+ 
 
 namespace CatFishingWebSite.Services
 {
@@ -24,6 +24,7 @@ namespace CatFishingWebSite.Services
             {
                 client.Connect(ipAdressOfServer,port);
                 Debug.WriteLine("Connection is succesfull");
+                GetUser("client2", "qwerty");
             }
             catch (Exception e)
             {
@@ -37,33 +38,37 @@ namespace CatFishingWebSite.Services
             Debug.WriteLine("MetHoOOOOOOOOOOOOOOOOOOOOOOOOOOD");
             Request request = new Request()
             {
-                Type = RequestTypes.GETUSER,
-                Arg = new User() { Username = username,Password = password }
+                Type = RequestTypes.LOGIN,
+                Args = new User() { Username = username,Password = password }
             };
-            var json = JsonSerializer.Serialize(request);
+             var json = System.Text.Json.JsonSerializer.Serialize(request);
+             
             Debug.WriteLine(json);
-            byte[] byData = Encoding.ASCII.GetBytes(json + ";");
-            client.Send(byData);
+            byte[] byData = Encoding.ASCII.GetBytes(json);
+            string m = "hello";
+            byte[] dd = Encoding.ASCII.GetBytes("hello");
+            client.Send(dd);
             Debug.Write("data have been sent");
-            //？？
+    
             json = Encoding.ASCII.GetString(byData);
             Debug.WriteLine(json);
 
 
             // receive data：
-            string recvStr = "";
-            byte[] recvBytes = new byte[1024];
-            int bytes;
-            bytes = client.Receive(recvBytes, recvBytes.Length, 0);
-            recvStr += Encoding.ASCII.GetString(recvBytes, 0, bytes);
+            //string recvStr = "";
+            //byte[] recvBytes = new byte[1024];
+            //int bytes;
+            //bytes = client.Receive(recvBytes, recvBytes.Length, 0);
+            //recvStr += Encoding.ASCII.GetString(recvBytes, 0, bytes);
+            //Debug.WriteLine("DATA RECEIVED===="+ recvStr);
             //var jjs = JsonSerializer.Deserialize(json);
             //User user = new User();
             //{
 
             //}
-           User user = JsonConvert.DeserializeObject<User>(recvStr);
+           //User user = JsonConvert.DeserializeObject<User>(recvStr);
            
-            return user;
+            return null;
             //json = JsonSerializer.Deserialize(byData.Enc)
 
         }

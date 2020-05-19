@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace CatFishingWebSite.Services
 {
-    [Serializable]
+    
     public class Request
     {
         public RequestTypes Type { get; set; }
-        public Object Arg { get; set; }
+        public Object Args { get; set; }
     }
 }
