@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using CatFishingWebSite.Model;
@@ -12,7 +13,7 @@ namespace CatFishingWebSite.Pages.Signup
 {
     public class indexModel : PageModel
     {
-        private static readonly IWebService webService = new WebService();
+        private static readonly IWebService webService = null;
         
 
         [BindProperty]

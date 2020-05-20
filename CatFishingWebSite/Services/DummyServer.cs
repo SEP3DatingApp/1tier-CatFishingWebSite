@@ -13,7 +13,7 @@ namespace CatFishingWebSite.Services
         public DummyServer()
         {
             dummy = new Fisher();
-            dummy.UserID = 1;
+          
             dummy.Username = "dummy";
             dummy.Password = "password";
             dummy.SexPref = 'f';

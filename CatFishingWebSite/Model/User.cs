@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace CatFishingWebSite.Model
 {
+    [Serializable]
     public class User
     {
 
         
-        [Range(1, 99999999999)]
-        public int UserID { get; set; }
+  
         [Required]
         public string Username { get; set; }
         [Required]

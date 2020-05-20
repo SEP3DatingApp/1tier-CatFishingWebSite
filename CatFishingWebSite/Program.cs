@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CatFishingWebSite.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -13,11 +14,8 @@ namespace CatFishingWebSite
 {
     public class Program
     {
-        public static void Main(string[] args)
-            
+        public static void Main(string[] args) 
         {
-        
-            Console.WriteLine("Client is running now");
             CreateHostBuilder(args).Build().Run();
         }
 

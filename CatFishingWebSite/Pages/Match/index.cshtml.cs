@@ -9,18 +9,18 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace CatFishingWebSite.Pages.Match
 {
     public class indexModel : PageModel
-    { 
-        
-        public User user { get;set; }
+    {
+
+        public User user { get; set; }
         public string Title { get; set; }
         //public void OnGet(string ? username)
         //{ 
-        
+
         //}
         String message;
-        public async Task<IActionResult> OnGetAsync(string ? username)
+        public async Task<IActionResult> OnGetAsync(string? username)
         {
-            
+
             Console.WriteLine(username);
             message = "hello user ";
             if (username == null)
@@ -29,8 +29,8 @@ namespace CatFishingWebSite.Pages.Match
             }
             Title = username;
 
-            
- 
+
+
             return Page();
         }
     }

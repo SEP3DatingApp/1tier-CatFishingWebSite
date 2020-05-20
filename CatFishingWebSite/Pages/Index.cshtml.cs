@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using CatFishingWebSite.Model;
 using CatFishingWebSite.Services;
@@ -14,13 +15,14 @@ namespace CatFishingWebSite.Pages
     public class IndexModel : PageModel
 
     {
-       private static readonly IWebService webService = new WebService();
-        private static readonly DummyServer dummy = new DummyServer();
-         
+        private static readonly IWebService webService = new WebService();
+        // private static readonly DummyServer dummy = new DummyServer();
+
+
 
         [BindProperty]
         public User user { get; set; }
-        
+
         private readonly ILogger<IndexModel> _logger;
 
         private bool isLogin;
@@ -36,26 +38,31 @@ namespace CatFishingWebSite.Pages
         }
         public async Task<IActionResult> OnPostAsync()
         {
-            Debug.WriteLine("onpost for login"); 
-            Debug.WriteLine("user name: "+user.Username);
-           
+            Debug.WriteLine("onpost for login");
+            Debug.WriteLine("user name: " + user.Username);
+
             string un = user.Username;
             string pwd = user.Password;
-         
-         
-           isLogin = webService.IsLogin(un, pwd);
+
+            try { isLogin = webService.IsLogin(un, pwd); }
+            catch (SocketException e)
+            {
+                return RedirectToPage("Error");
+            }
+
             if (isLogin)
             {
-                
+
                 return RedirectToPage("Match/" + user.Username);
-                
-            }else
-           errorMessage = "User Name or Password is incorrect"; 
+
+            }
+            else
+                errorMessage = "User Name or Password is incorrect";
             return Page();
-            
+
         }
 
-        public  string getUserName()
+        public string getUserName()
         {
 
             return user.Username;

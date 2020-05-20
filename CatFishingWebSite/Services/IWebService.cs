@@ -1,5 +1,6 @@
 ﻿using CatFishingWebSite.Model;
 using System.Collections.Generic;
+using System.Net.Sockets;
 
 namespace CatFishingWebSite.Services
 {
@@ -7,11 +8,10 @@ namespace CatFishingWebSite.Services
     interface IWebService
     {
         List<User> getAllUsers();
-        User GetUser(string username,string password);
+        User GetUser(string username, string password);
 
         // login 1st sprint
         bool IsLogin(string username, string password);
-
 
         // register
         void CreateUser(string username, string password);

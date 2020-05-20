@@ -8,8 +8,8 @@ namespace CatFishingWebSite.Services
     
     public class Request
     {
-        public RequestTypes Type { get; set; }
+        public String Type { get; set; }
         public Object Args { get; set; }
-       
+      
     }
 }
