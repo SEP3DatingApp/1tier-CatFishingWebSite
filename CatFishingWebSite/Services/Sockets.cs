@@ -35,26 +35,33 @@ namespace CatFishingWebSite.Services
 
         public User GetUser(string username, string password)
         {
+          
             Debug.WriteLine("MetHoOOOOOOOOOOOOOOOOOOOOOOOOOOD");
             Request request = new Request()
             {
                 Type = RequestTypes.LOGIN,
                 Args = new User() { Username = username,Password = password }
             };
-             var json = System.Text.Json.JsonSerializer.Serialize(request);
+            var json = System.Text.Json.JsonSerializer.Serialize(request);
              
             Debug.WriteLine(json);
             byte[] byData = Encoding.ASCII.GetBytes(json);
-            string m = "hello";
-            byte[] dd = Encoding.ASCII.GetBytes("hello");
-            client.Send(dd);
+
+          
+            Debug.WriteLine(BitConverter.ToString(byData));
+
+            client.Send(byData,byData.Length,0);
+
             Debug.Write("data have been sent");
     
             json = Encoding.ASCII.GetString(byData);
             Debug.WriteLine(json);
+            
+            
 
 
             // receive data：
+
             //string recvStr = "";
             //byte[] recvBytes = new byte[1024];
             //int bytes;
@@ -66,11 +73,12 @@ namespace CatFishingWebSite.Services
             //{
 
             //}
-           //User user = JsonConvert.DeserializeObject<User>(recvStr);
-           
-            return null;
-            //json = JsonSerializer.Deserialize(byData.Enc)
+            //resvStr = { "UserID":0,"Username":"client2","Password":"qwerty","Usertype":null};
+            User user = JsonConvert.DeserializeObject<User>(json);
 
+            
+            //json = JsonSerializer.Deserialize(byData.Enc)
+        return null;
         }
     }
 }

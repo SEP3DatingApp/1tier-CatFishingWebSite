@@ -9,6 +9,7 @@ namespace CatFishingWebSite.Services
     {
         GETALLUSERS,
         GETUSER,
-        LOGIN
+        LOGIN,
+        CREATEUSER
     }
 }

@@ -10,5 +10,6 @@ namespace CatFishingWebSite.Services
     {
         public RequestTypes Type { get; set; }
         public Object Args { get; set; }
+       
     }
 }

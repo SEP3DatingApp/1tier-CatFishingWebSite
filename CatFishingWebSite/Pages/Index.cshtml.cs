@@ -14,7 +14,7 @@ namespace CatFishingWebSite.Pages
     public class IndexModel : PageModel
 
     {
-       private static readonly IWebService webService;
+       private static readonly IWebService webService = new WebService();
         private static readonly DummyServer dummy = new DummyServer();
          
 
@@ -37,12 +37,13 @@ namespace CatFishingWebSite.Pages
         public async Task<IActionResult> OnPostAsync()
         {
             Debug.WriteLine("onpost for login"); 
-            Console.WriteLine("user name: "+user.Username);
-            Console.WriteLine(user.Password);
-          
+            Debug.WriteLine("user name: "+user.Username);
+           
+            string un = user.Username;
+            string pwd = user.Password;
          
          
-           isLogin = webService.IsLogin(user.Username, user.Password);
+           isLogin = webService.IsLogin(un, pwd);
             if (isLogin)
             {
                 

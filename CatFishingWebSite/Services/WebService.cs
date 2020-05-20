@@ -1,6 +1,7 @@
 ﻿using CatFishingWebSite.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,8 +26,11 @@ namespace CatFishingWebSite.Services
 
         public bool IsLogin(string username, string password)
         {
+           
+            Debug.WriteLine(username);
+
             User user = sockets.GetUser(username, password);
-           if (user != null && username ==user.Username && password == user.Password )
+           if (user != null && username == user.Username && password == user.Password )
             {
                 return true;
             }
