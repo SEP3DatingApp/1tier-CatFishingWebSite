@@ -14,8 +14,8 @@ namespace CatFishingWebSite.Pages.Signup
 {
     public class indexModel : PageModel
     {
-        private static readonly IWebService webService = null;
-        
+        private static readonly IWebService webService = new WebService();
+
 
         [BindProperty]
         public Fisher fisher { get; set; }
@@ -31,7 +31,7 @@ namespace CatFishingWebSite.Pages.Signup
 
         public async Task<IActionResult> OnPostAsync()
         {
-            Debug.WriteLine("wuwuwuwuwuwuwulalalawlala"+fisher.Gender);
+            
             
             //if( ! webService.IsUniqueUserName(fisher.Username))
             //{
@@ -53,17 +53,19 @@ namespace CatFishingWebSite.Pages.Signup
             }
             if (fisher.SexPref != 'M' && fisher.SexPref != 'F' && fisher.SexPref != 'B')
             {
+                errorMessage = "select your gender or sex preference";
                 return Page();
             }
             if (fisher.Gender!= 'M' && fisher.Gender != 'F')
             {
+                errorMessage = "select your gender or sex preference";
                 return Page();
             }
-            //successMessage = "Sign up now...";
-            //webService.CreateUser(fisher.Username, fisher.Password,fisher.Gender,fisher.SexPref);
-            //Console.WriteLine("Create a new account");
-            //successMessage = "Sign up successfully ,Back to login page";
-            //Thread.Sleep(3000);
+            successMessage = "Sign up now...";
+            webService.CreateUser(fisher.Username, fisher.Password, fisher.Gender, fisher.SexPref);
+            Console.WriteLine("Create a new account");
+            successMessage = "Sign up successfully ,Back to login page";
+            Thread.Sleep(3000);
             return RedirectToPage("../Index");
             
         }

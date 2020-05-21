@@ -8,6 +8,10 @@ namespace CatFishingWebSite.Services
 {
     interface ISockets
     {
-        User GetUser(string username, string password);
+        User LoginUser(string username, string password);
+
+        string create(string username, string password, char gender, char sxepf);
+
+
     }
 }

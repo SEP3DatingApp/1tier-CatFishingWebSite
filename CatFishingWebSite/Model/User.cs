@@ -12,7 +12,7 @@ namespace CatFishingWebSite.Model
     {
 
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
+        
         [Required]
         public string Username { get; set; }
         [Required]
