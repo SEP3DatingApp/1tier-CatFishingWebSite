@@ -34,7 +34,8 @@ namespace CatFishingWebSite.Pages
 
         public void OnGet()
         {
-            Console.WriteLine("onget for login");
+            CookieModel.isLogin = false;
+            Console.WriteLine("on get for login");
         }
         public async Task<IActionResult> OnPostAsync()
         {
@@ -49,11 +50,13 @@ namespace CatFishingWebSite.Pages
             {
                 return RedirectToPage("Error");
             }
-
+            //isLogin = true;
             if (isLogin)
             {
-
-                return RedirectToPage("Match/" + user.Username);
+                CookieModel.userName = un;
+                CookieModel.isLogin = true;
+                CookieModel.userName = null;
+                return Redirect("/Match/"+user.Username );
 
             }
             else

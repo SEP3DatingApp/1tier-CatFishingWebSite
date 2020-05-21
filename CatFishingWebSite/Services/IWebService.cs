@@ -14,7 +14,7 @@ namespace CatFishingWebSite.Services
         bool IsLogin(string username, string password);
 
         // register
-        void CreateUser(string username, string password);
+        void CreateUser(string username, string password,char gender,char sxepf);
 
         bool IsUniqueUserName(string username);
 

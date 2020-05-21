@@ -11,7 +11,8 @@ namespace CatFishingWebSite.Services
         public Sockets sock { get; set; }
         public WebService()
         {
-            sock = new Sockets("localhost", 5000);
+            //192.168.1.144
+            sock = new Sockets("192.168.1.144", 5000);
         }
         public List<User> getAllUsers()
         {
@@ -30,6 +31,7 @@ namespace CatFishingWebSite.Services
             Debug.WriteLine(username);
 
             User user = sock.GetUser(username, password);
+            Debug.WriteLine("user: " + user.Username + " log in now!!!!");
             if (user != null && username == user.Username)
             {
                 return true;
@@ -43,7 +45,7 @@ namespace CatFishingWebSite.Services
             throw new NotImplementedException();
         }
 
-        public void CreateUser(string username, string password)
+        public void CreateUser(string username, string password,char gender,char sexpf)
         {
             throw new NotImplementedException();
         }

@@ -1,7 +1,7 @@
 ﻿@page
 @model CatFishingWebSite.Pages.Signup.indexModel
 @{
-    
+
     ViewData["Title"] = "index";
 }
 
@@ -20,15 +20,15 @@
              <!-- <input type="submit" value="Upload" />-->
         </fieldset>*@
                 <div class="form-group">
-                    <label asp-for="user.Username" class="control-label"></label>
-                    <input asp-for="user.Username" class="form-control" />
-                    <span asp-validation-for="user.Username" class="text-danger"></span>
+                    <label asp-for="fisher.Username" class="control-label"></label>
+                    <input asp-for="fisher.Username" class="form-control" />
+                    <span asp-validation-for="fisher.Username" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="user.Password" class="control-label"></label>
-                    <input asp-for="user.Password" class="form-control" />
-                    <span asp-validation-for="user.Password" class="text-danger"></span>
+                    <label asp-for="fisher.Password" class="control-label"></label>
+                    <input asp-for="fisher.Password" class="form-control" />
+                    <span asp-validation-for="fisher.Password" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
@@ -36,18 +36,37 @@
                     <input asp-for="passwordAgain" class="form-control" />
                     <span asp-validation-for="passwordAgain" class="text-danger"></span>
                 </div>
+                <div class="form-group">
+                    <label asp-for="fisher.Gender" class="control-label">Gender： </label>
+
+                    <label><input asp-for="fisher.Gender" type="radio" value='F'> Female </label>
+                    <label><input asp-for="fisher.Gender" type="radio" value='M'> Male </label>
+
+                    <span asp-validation-for="fisher.Gender" class="text-danger"></span>
+                </div>
 
                 <div class="form-group">
-                    <p></p>
+                    <label asp-for="fisher.SexPref" class="control-label">Sexual orientation： </label>
+                    <br />
+                    <label><input asp-for="fisher.SexPref" type="radio" value='F'> women</label>
+                    <label><input asp-for="fisher.SexPref" type="radio" value='M'> men </label>
+                    <label><input asp-for="fisher.SexPref" type="radio" value='B'> both sexes </label>
+
+                    <span asp-validation-for="fisher.SexPref" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <br/>
                     <span class="text-danger">@Model.errorMessage</span>
+                    <br />
                     <input type="submit" value="Sign up now" class="btn btn-primary" />
 
                     <h6>@Model.successMessage</h6>
                 </div>
             </form>
         </div>
-        
-       
+
+
         <div class="col-md-1"></div>
 
     </div>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
@@ -17,7 +18,7 @@ namespace CatFishingWebSite.Pages.Signup
         
 
         [BindProperty]
-        public User user { get; set; }
+        public Fisher fisher { get; set; }
 
         [BindProperty]
         public string passwordAgain { get; set; }
@@ -30,30 +31,39 @@ namespace CatFishingWebSite.Pages.Signup
 
         public async Task<IActionResult> OnPostAsync()
         {
+            Debug.WriteLine("wuwuwuwuwuwuwulalalawlala"+fisher.Gender);
             
-            if( ! webService.IsUniqueUserName(user.Username))
-            {
-                errorMessage = "Username already exists";
-                return Page();
-            }
-            if (user.Password!=passwordAgain)
+            //if( ! webService.IsUniqueUserName(fisher.Username))
+            //{
+            //    errorMessage = "Username already exists";
+            //    return Page();
+            //}
+            if (fisher.Password!=passwordAgain)
             {
                 errorMessage = "please type right password again";
                 return Page();
             }
-            if(user.Username == null)
+            if(fisher.Username == null)
             {
                 return Page();
             }
-            if(user.Password == null)
+            if(fisher.Password == null)
             {
                 return Page();
             }
-            successMessage = "Sign up now...";
-            webService.CreateUser(user.Username, user.Password);
-            Console.WriteLine("Create a new account");
-            successMessage = "Sign up successfully ,Back to login page";
-            Thread.Sleep(3000);
+            if (fisher.SexPref != 'M' && fisher.SexPref != 'F' && fisher.SexPref != 'B')
+            {
+                return Page();
+            }
+            if (fisher.Gender!= 'M' && fisher.Gender != 'F')
+            {
+                return Page();
+            }
+            //successMessage = "Sign up now...";
+            //webService.CreateUser(fisher.Username, fisher.Password,fisher.Gender,fisher.SexPref);
+            //Console.WriteLine("Create a new account");
+            //successMessage = "Sign up successfully ,Back to login page";
+            //Thread.Sleep(3000);
             return RedirectToPage("../Index");
             
         }

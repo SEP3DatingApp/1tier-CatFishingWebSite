@@ -76,13 +76,16 @@ namespace CatFishingWebSite.Services
             }
 
 
-            string js = @"{""user"":"+recvStr;
+            string js = @"{""user"":"+recvStr + "}";
+            Debug.WriteLine(js);
             JObject jObject = JObject.Parse(js);
             JToken jUser = jObject["user"];
             User user = new User();
             user.Username = (string)jUser["username"];
             user.Usertype = (string)jUser["role"];
-            Debug.WriteLine(user.Username);
+            string token = (string)jUser["token"];
+            
+            Debug.WriteLine("hello : "+user.Username);
 
             // DATA RECEIVED===={ "role":"Administrator","userID":2,"username":"admin1","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjIiLCJyb2xlIjoiQWRtaW5pc3RyYXRvciIsIm5iZiI6MTU4OTk5MTgwMywiZXhwIjoxNTg5OTk1NDAzLCJpYXQiOjE1ODk5OTE4MDN9.Io8en2j6urqXQQBLD1wM0SK8lTMAp8ETsRhmND3aag0"}
             //json = JsonSerializer.Deserialize(byData.Enc)

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CatFishingWebSite.Pages.Match
 {
+    // match page for fisher , provide users after fitter
     public class indexModel : PageModel
     {
 
@@ -18,7 +19,7 @@ namespace CatFishingWebSite.Pages.Match
 
         //}
         String message;
-        public async Task<IActionResult> OnGetAsync(string? username)
+        public async Task<IActionResult> OnGetAsync(string username)
         {
 
             Console.WriteLine(username);

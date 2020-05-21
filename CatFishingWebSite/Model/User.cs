@@ -11,8 +11,8 @@ namespace CatFishingWebSite.Model
     public class User
     {
 
-        
-  
+
+        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
         [Required]
         public string Username { get; set; }
         [Required]
@@ -29,7 +29,9 @@ namespace CatFishingWebSite.Model
         public string FirstName { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
+        [Required]
         public char Gender { get; set; }
+        [Required]
         public char SexPref { get; set; }
         public string PicRef { get; set; }
         public int Age { get; set; }
