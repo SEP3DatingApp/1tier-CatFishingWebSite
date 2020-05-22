@@ -46,7 +46,7 @@ namespace CatFishingWebSite.Pages
             string pwd = user.Password;
 
             try { isLogin = webService.IsLogin(un, pwd); }
-            catch (SocketException e)
+            catch (SocketException)
             {
                 return RedirectToPage("Error");
             }
@@ -55,7 +55,7 @@ namespace CatFishingWebSite.Pages
             {
                 CookieModel.userName = un;
                 CookieModel.isLogin = true;
-                CookieModel.userName = null;
+                
                 return Redirect("/Match/"+user.Username );
 
             }

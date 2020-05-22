@@ -10,6 +10,10 @@ namespace CatFishingWebSite.Services
         GETALLUSERS,
         GETUSER,
         LOGIN,
-        CREATEUSER
+        LOGOUT,
+        CREATEUSER,
+        //edit
+        EDITFISHER,
+        GETFISHER
     }
 }

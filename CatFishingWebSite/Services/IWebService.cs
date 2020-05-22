@@ -1,4 +1,5 @@
 ﻿using CatFishingWebSite.Model;
+using Microsoft.Extensions.Primitives;
 using System.Collections.Generic;
 using System.Net.Sockets;
 
@@ -14,12 +15,11 @@ namespace CatFishingWebSite.Services
         bool IsLogin(string username, string password);
 
         // register
-        string CreateUser(string username, string password,char gender,char sexpf);
-
-        bool IsUniqueUserName(string username);
-
+        bool CreateUser(string username, string password,char gender,char sexpf);
 
         // edit account
         Fisher GetFisherByName(string username);
+
+       // bool UpdateFisher(string username, string password, char gender, char sexpf, string firstName, string surname, string email, int age, string description, bool isActive);
     }
 }

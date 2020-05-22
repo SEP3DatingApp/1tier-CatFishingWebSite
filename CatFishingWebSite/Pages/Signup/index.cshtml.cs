@@ -9,7 +9,7 @@ using CatFishingWebSite.Model;
 using CatFishingWebSite.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
- 
+
 namespace CatFishingWebSite.Pages.Signup
 {
     public class indexModel : PageModel
@@ -26,28 +26,28 @@ namespace CatFishingWebSite.Pages.Signup
         public string successMessage;
         public void OnGet()
         {
-             
+
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            
-            
+
+
             //if( ! webService.IsUniqueUserName(fisher.Username))
             //{
             //    errorMessage = "Username already exists";
             //    return Page();
             //}
-            if (fisher.Password!=passwordAgain)
+            if (fisher.Password != passwordAgain)
             {
                 errorMessage = "please type right password again";
                 return Page();
             }
-            if(fisher.Username == null)
+            if (fisher.Username == null)
             {
                 return Page();
             }
-            if(fisher.Password == null)
+            if (fisher.Password == null)
             {
                 return Page();
             }
@@ -56,18 +56,30 @@ namespace CatFishingWebSite.Pages.Signup
                 errorMessage = "select your gender or sex preference";
                 return Page();
             }
-            if (fisher.Gender!= 'M' && fisher.Gender != 'F')
+            if (fisher.Gender != 'M' && fisher.Gender != 'F')
             {
                 errorMessage = "select your gender or sex preference";
                 return Page();
             }
             successMessage = "Sign up now...";
-            webService.CreateUser(fisher.Username, fisher.Password, fisher.Gender, fisher.SexPref);
-            Console.WriteLine("Create a new account");
-            successMessage = "Sign up successfully ,Back to login page";
-            Thread.Sleep(3000);
-            return RedirectToPage("../Index");
-            
+            bool created;
+            try { created = webService.CreateUser(fisher.Username, fisher.Password, fisher.Gender, fisher.SexPref); }
+            catch (SocketException)
+            {
+                return RedirectToPage("Error");
+            }
+
+            if (created)
+            {
+                Console.WriteLine("Create a new account");
+                successMessage = "Sign up successfully ,Back to login page";
+                Thread.Sleep(3000);
+                return RedirectToPage("../Index");
+            }
+            errorMessage = "Username already exists";
+            return Page();
+
+
         }
-        }
+    }
 }

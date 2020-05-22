@@ -42,7 +42,7 @@ namespace CatFishingWebSite.Services
             };
             string recvStr = SendReceive(request);
             Debug.WriteLine("DATA RECEIVED====" + recvStr);
-            return null;
+            return recvStr;
         }
 
         public User LoginUser(string username, string password)
@@ -86,20 +86,19 @@ namespace CatFishingWebSite.Services
             byte[] byData = Encoding.ASCII.GetBytes(json + ";");
 
             Debug.WriteLine(BitConverter.ToString(byData));
-
+            //send
             client.Send(byData);
 
             Debug.Write("data have been sent");
 
             json = Encoding.ASCII.GetString(byData);
-
             //receive
             string recvStr = "";
             byte[] recvBytes = new byte[1024];
             int bytes;
             bytes = client.Receive(recvBytes, recvBytes.Length, 0);
             recvStr += Encoding.ASCII.GetString(recvBytes, 0, bytes);
-            Debug.WriteLine("DATA RECEIVED====" + recvStr);
+            Debug.WriteLine("DATA RECEIVED==== " + recvStr);
             return recvStr;
         }
     }

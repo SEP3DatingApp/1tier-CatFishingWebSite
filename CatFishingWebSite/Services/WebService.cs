@@ -12,7 +12,9 @@ namespace CatFishingWebSite.Services
         public WebService()
         {
             //192.168.1.144
-            sock = new Sockets("localhost", 5000);
+            //192.168.1.142
+            //localhost
+            sock = new Sockets("192.168.1.142", 5000);
         }
         public List<User> getAllUsers()
         {
@@ -45,9 +47,14 @@ namespace CatFishingWebSite.Services
             throw new NotImplementedException();
         }
 
-        public string CreateUser(string username, string password,char gender,char sexpf)
+        public bool CreateUser(string username, string password,char gender,char sexpf)
         {
-           return sock.create(username, password, gender, sexpf);
+            string reply =  sock.create(username, password, gender, sexpf);
+            if (reply.Contains("200"))
+            {
+                return true;
+            }
+            return false;
         }
 
         public Fisher GetFisherByName(string username)
