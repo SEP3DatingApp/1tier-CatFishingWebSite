@@ -26,7 +26,7 @@ namespace CatFishingWebSite.Services
                 client.Connect(ipAdressOfServer, port);
                 Debug.WriteLine("Connection is succesfull");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Debug.WriteLine("WRONG");
                 //client.Close();
@@ -45,10 +45,21 @@ namespace CatFishingWebSite.Services
             return recvStr;
         }
 
+        public string getFisher(string username)
+        {
+            // get fisher by name
+            Request request = new Request()
+            {
+                Type = RequestTypes.GETFISHER.ToString(),
+                Args = new Fisher { Username = username}
+            };
+            string recvStr = SendReceive(request);
+            Debug.WriteLine("DATA RECEIVED====" + recvStr);
+            return recvStr;
+        }
+
         public User LoginUser(string username, string password)
         {
-
-            Debug.WriteLine("MetHoOOOOOOOOOOOOOOOOOOOOOOOOOOD");
             Request request = new Request()
             {
                 Type = RequestTypes.LOGIN.ToString(),

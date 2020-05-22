@@ -12,6 +12,8 @@ namespace CatFishingWebSite.Services
 
         string create(string username, string password, char gender, char sxepf);
 
+        string getFisher(string username);
+
 
     }
 }
