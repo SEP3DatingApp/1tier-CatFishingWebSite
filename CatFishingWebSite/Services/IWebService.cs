@@ -20,6 +20,6 @@ namespace CatFishingWebSite.Services
         // edit account
         Fisher GetFisherByName(string username);
 
-       // bool UpdateFisher(string username, string password, char gender, char sexpf, string firstName, string surname, string email, int age, string description, bool isActive);
+         bool UpdateFisher(string username, string password, char gender, char sexpf, string firstName, string surname, string email, int age, string description, bool isActive);
     }
 }
