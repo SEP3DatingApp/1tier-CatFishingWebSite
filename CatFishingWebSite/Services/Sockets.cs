@@ -1,15 +1,13 @@
 ﻿using CatFishingWebSite.Model;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Sockets;
 using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-
+using System.Linq;
+// NuGet command to install for edcode token , command below
+// Install-Package jose-jwt -Version 2.5.0
+using System.IdentityModel.Tokens.Jwt;
 
 namespace CatFishingWebSite.Services
 {
@@ -25,6 +23,7 @@ namespace CatFishingWebSite.Services
             {
                 client.Connect(ipAdressOfServer, port);
                 Debug.WriteLine("Connection is succesfull");
+
             }
             catch (Exception)
             {
@@ -51,7 +50,7 @@ namespace CatFishingWebSite.Services
             Request request = new Request()
             {
                 Type = RequestTypes.GETFISHER.ToString(),
-                Args = new Fisher { Username = username}
+                Args = new Fisher { Username = username }
             };
             string recvStr = SendReceive(request);
             Debug.WriteLine("DATA RECEIVED====" + recvStr);
@@ -79,7 +78,13 @@ namespace CatFishingWebSite.Services
             User user = new User();
             user.Username = (string)jUser["username"];
             user.Usertype = (string)jUser["role"];
-            string token = (string)jUser["token"];
+            var token = (string)jUser["token"];
+
+            // decode token
+            string jwtEncodedString = token;
+            var t = new JwtSecurityToken(jwtEncodedString: jwtEncodedString);
+           
+            Debug.WriteLine("Id => " + t.Claims.First(c => c.Type == "unique_name").Value);
 
             Debug.WriteLine("hello : " + user.Username);
 
