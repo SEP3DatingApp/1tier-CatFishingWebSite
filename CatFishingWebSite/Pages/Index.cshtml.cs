@@ -15,7 +15,7 @@ namespace CatFishingWebSite.Pages
     public class IndexModel : PageModel
 
     {
-        private static readonly IWebService webService = new WebService();
+        private static readonly WebService webService = WebService.getInstance();
         // private static readonly DummyServer dummy = new DummyServer();
 
 
@@ -35,6 +35,7 @@ namespace CatFishingWebSite.Pages
         public void OnGet()
         {
             CookieModel.isLogin = false;
+            CookieModel.userName = null;
             Console.WriteLine("on get for login");
         }
         public async Task<IActionResult> OnPostAsync()
@@ -56,7 +57,7 @@ namespace CatFishingWebSite.Pages
                 CookieModel.userName = un;
                 CookieModel.isLogin = true;
                 
-                return Redirect("/Match/"+user.Username );
+                return Redirect("/Match/"+CookieModel.id );
 
             }
             else

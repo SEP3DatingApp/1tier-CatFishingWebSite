@@ -1,9 +1,9 @@
-﻿@page "{username?}"
+﻿@page "{id?}"
 @RouteData.Values["title"]
 @model CatFishingWebSite.Pages.Match.indexModel
 @{
     ViewData["Title"] = "index";
 }
 
-<h1>Hello userName @Model.Title , find your date</h1>
+<h1>Hello userName @CatFishingWebSite.Model.CookieModel.userName , find your date</h1>
 

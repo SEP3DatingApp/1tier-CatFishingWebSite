@@ -19,16 +19,16 @@ namespace CatFishingWebSite.Pages.Match
 
         //}
         String message;
-        public async Task<IActionResult> OnGetAsync(string username)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
 
-            Console.WriteLine(username);
+            Console.WriteLine(id);
             message = "hello user ";
-            if (username == null)
+            if (id ==0)
             {
                 return NotFound();
             }
-            Title = username;
+            
 
 
 

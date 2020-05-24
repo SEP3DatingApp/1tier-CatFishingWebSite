@@ -26,7 +26,8 @@ namespace CatFishingWebSite
         {
             services.AddRazorPages();
             //TODO: (HZ)comment below is for testing web page
-            services.AddSingleton<IWebService, WebService>();
+           //services.AddSingleton<IWebService, WebService>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

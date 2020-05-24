@@ -13,7 +13,9 @@ namespace CatFishingWebSite.Model
         // set username for navigation bar
         public static string userName { get; set; }
 
+        public static int id { get; set; }
+
         // store token after login
-        public string token { get; set; }
+        public static string token { get; set; }
     }
 }

@@ -10,9 +10,11 @@ namespace CatFishingWebSite.Services
     {
         User LoginUser(string username, string password);
 
-        string create(string username, string password, char gender, char sxepf);
+        string Create(string username, string password, char gender, char sxepf);
 
-        string getFisher(string username);
+        string GetFisher(string username);
+
+        string EditFisher(string username, string password, char gender, char sexpf, string firstName, string surname, string email, int age, string description, bool isActive);
 
 
     }

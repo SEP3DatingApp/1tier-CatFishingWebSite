@@ -23,7 +23,7 @@
 
                 @if (CatFishingWebSite.Model.CookieModel.isLogin)
                 {
-                    <a class="nav-link text-dark" asp-area="" asp-page="/AccountManage/index" asp-route-username="@CatFishingWebSite.Model.CookieModel.userName">Welcome: @CatFishingWebSite.Model.CookieModel.userName</a>
+                    <a class="nav-link text-dark" asp-area="" asp-page="/AccountManage/index" asp-route-id="@CatFishingWebSite.Model.CookieModel.id">Welcome: @CatFishingWebSite.Model.CookieModel.userName</a>
                 }
                 else
                 {

@@ -32,19 +32,24 @@ namespace CatFishingWebSite.Services
             }
         }
 
-        public string create(string username, string password, char gender, char sexpf)
+        public string Create(string username, string password, char gender, char sexpf)
         {
             Request request = new Request()
             {
                 Type = RequestTypes.CREATEUSER.ToString(),
-                Args = new Fisher { Username = username, Password = password, Gender = gender, SexPref = sexpf, IsActive = true }
+                Args = new Fisher { Username = username, Password = password, Gender = gender, SexPref = sexpf, IsActive = true } 
             };
             string recvStr = SendReceive(request);
             Debug.WriteLine("DATA RECEIVED====" + recvStr);
             return recvStr;
         }
 
-        public string getFisher(string username)
+        public string EditFisher(string username, string password, char gender, char sexpf, string firstName, string surname, string email, int age, string description, bool isActive)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetFisher(string username)
         {
             // get fisher by name
             Request request = new Request()
@@ -79,13 +84,15 @@ namespace CatFishingWebSite.Services
             user.Username = (string)jUser["username"];
             user.Usertype = (string)jUser["role"];
             var token = (string)jUser["token"];
-
             // decode token
             string jwtEncodedString = token;
             var t = new JwtSecurityToken(jwtEncodedString: jwtEncodedString);
            
             Debug.WriteLine("Id => " + t.Claims.First(c => c.Type == "unique_name").Value);
-
+            string value = t.Claims.First(c => c.Type == "unique_name").Value;       
+            CookieModel.token = token;
+            CookieModel.id = Convert.ToInt32(value);
+            user.Id = Convert.ToInt32(value);
             Debug.WriteLine("hello : " + user.Username);
 
             if (user.Username != "")

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CatFishingWebSite.Model;
+using CatFishingWebSite.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,11 +11,16 @@ namespace CatFishingWebSite.Pages.AccountManage
 {
     public class indexModel : PageModel
     {
-        Fisher fisher { get; set; }
+        private static readonly WebService webService = WebService.getInstance();
+
+
+        public Fisher fisher { get; set; }
         string Username { get; set; }
-        public void OnGet(string  username)
+        public void OnGet(int id)
         {
-             Username = username;
+            fisher = webService.GetFisherByName(CookieModel.userName);
+
+            Username = CookieModel.userName;
         }
     }
 }

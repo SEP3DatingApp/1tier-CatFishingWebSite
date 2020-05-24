@@ -1,8 +1,63 @@
-﻿@page "{username?}"
+﻿@page "{id?}"
 @model CatFishingWebSite.Pages.AccountManage.indexModel
 @{
     ViewData["Title"] = "index";
 }
 
-<h1>  account detail </h1>
+    <h1> Your  account detail  </h1>
+
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fisher.FirstName)
+            @Html.DisplayNameFor(model => model.fisher.Surname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fisher.FirstName)
+            @Html.DisplayFor(model => model.fisher.Surname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fisher.Age)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fisher.Age)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fisher.Gender)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fisher.Gender)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fisher.SexPref)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fisher.SexPref)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fisher.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fisher.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fisher.IsActive)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fisher.IsActive)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fisher.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fisher.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.fisher.Id">Edit</a> |
+   
+</div>
 
