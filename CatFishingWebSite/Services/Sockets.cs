@@ -24,7 +24,7 @@ namespace CatFishingWebSite.Services
             {
                 client.Connect(ipAdressOfServer, port);
                 Debug.WriteLine("Connection is succesfull");
-           
+
 
             }
             catch (Exception)
@@ -34,26 +34,25 @@ namespace CatFishingWebSite.Services
             }
         }
 
-        public string Create(string username, string password, char gender, char sexpf)
+        public string Create(string username,string firstname, string password, char gender, char sexpf)
         {
             Request request = new Request()
             {
                 Type = RequestTypes.CREATEUSER.ToString(),
-                Args = new Fisher { Username = username, Password = password, Gender = gender, SexPref = sexpf, IsActive = true } 
+                Args = new Fisher { Username = username, FirstName = firstname ,Password = password, Gender = gender, SexPref = sexpf, IsActive = true }
             };
             string recvStr = SendReceive(request);
             Debug.WriteLine("DATA RECEIVED====" + recvStr);
             return recvStr;
         }
 
-        public string EditFisher(int id, char sexpf, string firstName, string surname, string email, int age, string description, bool isActive)
+        public string EditFisher(int id, char sexpf, string password, string email, int age, string description, bool isActive)
         {
             Request request = new Request()
             {
                 Type = RequestTypes.EDITFISHER.ToString(),
-                Args = new Fisher { id = id, SexPref = sexpf, IsActive = true, FirstName = firstName, Surname = surname, Email = email, Age = age, Description = description, token = CookieModel.token }
+                Args = new Fisher { id = id, SexPref = sexpf, IsActive = true, Password = password, Email = email, Age = age, Description = description, token = CookieModel.token }
             };
-
             string recvStr = SendReceive(request);
             Debug.WriteLine("DATA RECEIVED====" + recvStr);
             return recvStr;
@@ -65,11 +64,11 @@ namespace CatFishingWebSite.Services
             Request request = new Request()
             {
                 Type = RequestTypes.GETFISHER.ToString(),
-                Args = new Fisher {Gender='M' , id=id ,token = CookieModel.token }
+                Args = new Fisher { Gender = 'M', id = id, token = CookieModel.token }
             };
             string recvStr = SendReceive(request);
             Debug.WriteLine("DATA RECEIVED====" + recvStr);
-          
+
             return recvStr;
         }
 
@@ -98,15 +97,15 @@ namespace CatFishingWebSite.Services
             // decode token
             string jwtEncodedString = token;
             var t = new JwtSecurityToken(jwtEncodedString: jwtEncodedString);
-           
+
             Debug.WriteLine("Id => " + t.Claims.First(c => c.Type == "unique_name").Value);
-            string value = t.Claims.First(c => c.Type == "unique_name").Value;       
+            string value = t.Claims.First(c => c.Type == "unique_name").Value;
             CookieModel.token = token;
             CookieModel.id = Convert.ToInt32(value);
             user.id = Convert.ToInt32(value);
             Debug.WriteLine("hello : " + user.Username);
 
-             
+
             if (user.Username != "")
             {
                 return user;

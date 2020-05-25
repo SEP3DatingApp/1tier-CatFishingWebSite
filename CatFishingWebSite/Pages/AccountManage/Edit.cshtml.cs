@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using CatFishingWebSite.Model;
@@ -16,12 +17,13 @@ namespace CatFishingWebSite.Pages.AccountManage
         private static readonly WebService webService = new WebService();
         [BindProperty]
         public Fisher fisher { get; set; }
-        public int Id;
+        public int Id { get; set; }
         public string Username;
+        private bool isUpdate { get; set; }
 
         public void OnGet(int id)
         {
-            Id = id;
+           
             fisher = webService.GetFisherByName(id);
 
             Username = CookieModel.userName;
@@ -29,12 +31,17 @@ namespace CatFishingWebSite.Pages.AccountManage
 
         public async Task<IActionResult> OnPostAsync()
         {
-            bool isUpdate = webService.UpdateFisher(Id, fisher.SexPref,fisher.FirstName,fisher.Surname,fisher.Email,fisher.Age,fisher.Description,fisher.IsActive);
+            try {  isUpdate = webService.UpdateFisher(CookieModel.id, fisher.SexPref, fisher.Password, fisher.Email, fisher.Age, fisher.Description, fisher.IsActive); }
+            catch (SocketException)
+            {
+                return Redirect("../error");
+            }
             if (isUpdate)
             {
                 Debug.WriteLine("change successfully");
             }
+
             return Page();
         }
-        }
+    }
 }

@@ -27,7 +27,7 @@ namespace CatFishingWebSite.Model
     {
        
         public string FirstName { get; set; }
-        public string Surname { get; set; }
+      
         public string Email { get; set; }
         [Required]
         public char Gender { get; set; }

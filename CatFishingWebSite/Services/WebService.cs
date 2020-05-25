@@ -50,9 +50,9 @@ namespace CatFishingWebSite.Services
 
         }
 
-        public bool CreateUser(string username, string password,char gender,char sexpf)
+        public bool CreateUser(string username,string firstname, string password,char gender,char sexpf)
         {
-            string reply =  sock.Create(username, password, gender, sexpf);
+            string reply =  sock.Create(username,firstname, password, gender, sexpf);
             if (reply.Contains("200"))
             {
                 return true;
@@ -88,15 +88,16 @@ namespace CatFishingWebSite.Services
             }
 
             Fisher dummy = new Fisher();
-            dummy.id = 24;
+            dummy.id = 9;
             dummy.Username = "dummy";
             dummy.Gender = 'F';
             return dummy;
         }
 
-        public bool UpdateFisher(int id, char sexpf, string firstName, string surname, string email, int age, string description, bool isActive)
+        public bool UpdateFisher(int id, char sexpf, string password, string email, int age, string description, bool isActive)
         {
-            string req = sock.EditFisher(id, sexpf, firstName, surname, email, age, description, isActive);
+            string req = sock.EditFisher(id, sexpf, password, email, age, description, isActive);
+
             if (req.Contains("200"))
             {
                 return true;
