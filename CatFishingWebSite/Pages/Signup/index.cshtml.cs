@@ -40,7 +40,7 @@ namespace CatFishingWebSite.Pages.Signup
             //}
             if (fisher.Password != passwordAgain)
             {
-                errorMessage = "Passwords doesn't match, please type the right password again";
+                errorMessage = "Passwords doesn't match, please type the right passwords again";
                 return Page();
             }
             if (fisher.Username == null)

@@ -48,9 +48,9 @@
                 <div class="form-group">
                     <label asp-for="fisher.SexPref" class="control-label">Sexual orientation： </label>
                     <br />
-                    <label><input asp-for="fisher.SexPref" type="radio" value='F'> women</label>
-                    <label><input asp-for="fisher.SexPref" type="radio" value='M'> men </label>
-                    <label><input asp-for="fisher.SexPref" type="radio" value='B'> both sexes </label>
+                    <label><input asp-for="fisher.SexPref" type="radio" value='F'> Women</label>
+                    <label><input asp-for="fisher.SexPref" type="radio" value='M'> Men </label>
+                    <label><input asp-for="fisher.SexPref" type="radio" value='B'> Both sexes </label>
 
                     <span asp-validation-for="fisher.SexPref" class="text-danger"></span>
                 </div>
@@ -59,7 +59,7 @@
                     <br />
                     <span class="text-danger">@Model.errorMessage</span>
                     <p></p>
-                    <input type="submit" value="Sign up now" class="btn btn-primary" />
+                    <input type="submit" value="Sign up now!" class="btn btn-primary" />
                     <br />
                     <h6>@Model.successMessage</h6>
                 </div>
