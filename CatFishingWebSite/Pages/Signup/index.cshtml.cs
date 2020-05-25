@@ -40,7 +40,7 @@ namespace CatFishingWebSite.Pages.Signup
             //}
             if (fisher.Password != passwordAgain)
             {
-                errorMessage = "please type right password again";
+                errorMessage = "Passwords doesn't match, please type the right password again";
                 return Page();
             }
             if (fisher.Username == null)
@@ -53,12 +53,12 @@ namespace CatFishingWebSite.Pages.Signup
             }
             if (fisher.SexPref != 'M' && fisher.SexPref != 'F' && fisher.SexPref != 'B')
             {
-                errorMessage = "select your gender or sex preference";
+                errorMessage = "Select your gender or sexual preference";
                 return Page();
             }
             if (fisher.Gender != 'M' && fisher.Gender != 'F')
             {
-                errorMessage = "select your gender or sex preference";
+                errorMessage = "Select your gender or sexual preference";
                 return Page();
             }
             successMessage = "Sign up now...";
@@ -72,7 +72,7 @@ namespace CatFishingWebSite.Pages.Signup
             if (created)
             {
                 Console.WriteLine("Create a new account");
-                successMessage = "Sign up successfully ,Back to login page";
+                successMessage = "Sign up successfully, back to login page";
                 
                 return RedirectToPage("./Success");
             }
