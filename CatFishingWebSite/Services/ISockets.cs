@@ -12,9 +12,9 @@ namespace CatFishingWebSite.Services
 
         string Create(string username, string password, char gender, char sxepf);
 
-        string GetFisher(string username);
+        string GetFisher(int id);
 
-        string EditFisher(string username, string password, char gender, char sexpf, string firstName, string surname, string email, int age, string description, bool isActive);
+        string EditFisher(int id, char sexpf, string firstName, string surname, string email, int age, string description, bool isActive);
 
 
     }

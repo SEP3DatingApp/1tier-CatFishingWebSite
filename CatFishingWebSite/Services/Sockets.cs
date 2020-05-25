@@ -11,6 +11,7 @@ using System.IdentityModel.Tokens.Jwt;
 
 namespace CatFishingWebSite.Services
 {
+    // send request and recevice response , Webservice will deal with the response
     public class Sockets : ISockets
     {
         Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -23,6 +24,7 @@ namespace CatFishingWebSite.Services
             {
                 client.Connect(ipAdressOfServer, port);
                 Debug.WriteLine("Connection is succesfull");
+           
 
             }
             catch (Exception)
@@ -44,21 +46,30 @@ namespace CatFishingWebSite.Services
             return recvStr;
         }
 
-        public string EditFisher(string username, string password, char gender, char sexpf, string firstName, string surname, string email, int age, string description, bool isActive)
+        public string EditFisher(int id, char sexpf, string firstName, string surname, string email, int age, string description, bool isActive)
         {
-            throw new NotImplementedException();
+            Request request = new Request()
+            {
+                Type = RequestTypes.EDITFISHER.ToString(),
+                Args = new Fisher { id = id, SexPref = sexpf, IsActive = true, FirstName = firstName, Surname = surname, Email = email, Age = age, Description = description, token = CookieModel.token }
+            };
+
+            string recvStr = SendReceive(request);
+            Debug.WriteLine("DATA RECEIVED====" + recvStr);
+            return recvStr;
         }
 
-        public string GetFisher(string username)
+        public string GetFisher(int id)
         {
             // get fisher by name
             Request request = new Request()
             {
                 Type = RequestTypes.GETFISHER.ToString(),
-                Args = new Fisher { Username = username }
+                Args = new Fisher {Gender='M' , id=id ,token = CookieModel.token }
             };
             string recvStr = SendReceive(request);
             Debug.WriteLine("DATA RECEIVED====" + recvStr);
+          
             return recvStr;
         }
 
@@ -92,9 +103,10 @@ namespace CatFishingWebSite.Services
             string value = t.Claims.First(c => c.Type == "unique_name").Value;       
             CookieModel.token = token;
             CookieModel.id = Convert.ToInt32(value);
-            user.Id = Convert.ToInt32(value);
+            user.id = Convert.ToInt32(value);
             Debug.WriteLine("hello : " + user.Username);
 
+             
             if (user.Username != "")
             {
                 return user;

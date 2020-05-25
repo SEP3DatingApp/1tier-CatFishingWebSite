@@ -11,7 +11,7 @@ namespace CatFishingWebSite.Model
     public class User
     {
 
-        public int Id { get; set; }
+        public int id { get; set; }
 
         [Required]
         public string Username { get; set; }
@@ -19,13 +19,13 @@ namespace CatFishingWebSite.Model
         public string Password { get; set; }
 
         public string Usertype { get; set; }
-      
-      
+
+        public  string token { get; set; }
     }
 
     public class Fisher : User
     {
-        public int Id { get; set; }
+       
         public string FirstName { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }

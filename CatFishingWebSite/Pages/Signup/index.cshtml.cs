@@ -14,7 +14,7 @@ namespace CatFishingWebSite.Pages.Signup
 {
     public class indexModel : PageModel
     {
-        private static readonly WebService webService = WebService.getInstance();
+        private static readonly WebService webService = new WebService();
 
 
         [BindProperty]
