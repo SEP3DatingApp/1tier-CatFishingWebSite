@@ -30,9 +30,9 @@ namespace CatFishingWebSite.Model
       
         public string Email { get; set; }
         [Required]
-        public char Gender { get; set; }
+        public string Gender { get; set; }
         [Required]
-        public char SexPref { get; set; }
+        public string SexPref { get; set; }
         public string PicRef { get; set; }
         public int Age { get; set; }
         public string Description { get; set; }

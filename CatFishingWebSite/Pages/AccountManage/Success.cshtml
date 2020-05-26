@@ -1,0 +1,8 @@
+﻿@page "{id?}"
+@model CatFishingWebSite.Pages.AccountManage.SuccessModel
+@{
+    ViewData["Title"] = "Success";
+}
+
+<h1>Change successfully  </h1>
+<a asp-page="./Index" asp-route-id="@Model.Id">Back to User detail</a>
