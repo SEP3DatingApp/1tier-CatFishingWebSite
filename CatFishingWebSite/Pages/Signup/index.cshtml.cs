@@ -14,7 +14,7 @@ namespace CatFishingWebSite.Pages.Signup
 {
     public class indexModel : PageModel
     {
-        private static readonly WebService webService = WebService.getInstance();
+        private static readonly WebService webService = new WebService();
 
 
         [BindProperty]
@@ -43,6 +43,10 @@ namespace CatFishingWebSite.Pages.Signup
                 errorMessage = "Passwords doesn't match, please type the right passwords again";
                 return Page();
             }
+            if (fisher.FirstName == null)
+            {
+                return Page();
+            }
             if (fisher.Username == null)
             {
                 return Page();
@@ -63,7 +67,7 @@ namespace CatFishingWebSite.Pages.Signup
             }
             successMessage = "Sign up now...";
             bool created;
-            try { created = webService.CreateUser(fisher.Username, fisher.Password, fisher.Gender, fisher.SexPref); }
+            try { created = webService.CreateUser(fisher.Username,fisher.FirstName, fisher.Password, fisher.Gender, fisher.SexPref); }
             catch (SocketException)
             {
                 return RedirectToPage("Error");

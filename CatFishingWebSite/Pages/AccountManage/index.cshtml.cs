@@ -11,14 +11,14 @@ namespace CatFishingWebSite.Pages.AccountManage
 {
     public class indexModel : PageModel
     {
-        private static readonly WebService webService = WebService.getInstance();
+        private static readonly WebService webService = new WebService();
 
-
+       
         public Fisher fisher { get; set; }
         string Username { get; set; }
         public void OnGet(int id)
         {
-            fisher = webService.GetFisherByName(CookieModel.userName);
+            fisher = webService.GetFisherByName(id);
 
             Username = CookieModel.userName;
         }

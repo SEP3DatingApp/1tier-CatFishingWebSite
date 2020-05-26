@@ -18,7 +18,7 @@ namespace CatFishingWebSite.Services
             dummy.Password = "password";
             dummy.SexPref = 'f';
             dummy.FirstName = "Dummy";
-            dummy.Surname = "Test";
+           
             dummy.Age = 23;
             dummy.Email = "22@via.dk";
         }

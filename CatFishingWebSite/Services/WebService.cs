@@ -9,20 +9,20 @@ namespace CatFishingWebSite.Services
    
     public class WebService
     {
-        private static WebService instance = new WebService();
+        // private static WebService instance = new WebService();
 
-        public static WebService getInstance()
-        {
-            return instance;
-        }
+        //public static WebService getInstance()
+        //{
+        //    return instance;
+        //}
 
         public Sockets sock { get; set; }
-        private WebService()
+        public WebService()
         {
             //192.168.1.144
             //192.168.1.142
             //localhost
-            sock = new Sockets("localhost", 5000);
+            sock = new Sockets("192.168.1.143", 5000);
         }
         public List<User> getAllUsers()
         {
@@ -41,7 +41,7 @@ namespace CatFishingWebSite.Services
             Debug.WriteLine(username);
 
             User user = sock.LoginUser(username, password);
-            Debug.WriteLine("user: " + user.Username + " log in now!!!!");
+          
             if (user != null && username == user.Username)
             {
                 return true;
@@ -50,14 +50,9 @@ namespace CatFishingWebSite.Services
 
         }
 
-        public bool IsUniqueUserName(string username)
+        public bool CreateUser(string username,string firstname, string password,char gender,char sexpf)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool CreateUser(string username, string password,char gender,char sexpf)
-        {
-            string reply =  sock.Create(username, password, gender, sexpf);
+            string reply =  sock.Create(username,firstname, password, gender, sexpf);
             if (reply.Contains("200"))
             {
                 return true;
@@ -65,21 +60,49 @@ namespace CatFishingWebSite.Services
             return false;
         }
 
-        public Fisher GetFisherByName(string username)
+        public Fisher GetFisherByName(int id)
         {
-            string reply = sock.GetFisher(username);
-            Debug.WriteLine("OHOHOHOH get fisher JSON");
-            Debug.WriteLine(reply);
+            
+            string reply = sock.GetFisher(id);
+
+            if (reply.Contains("role fisher"))
+            {
+                //string js = @"{""fisher"":" + recvStr + "}";
+                //Debug.WriteLine(js);
+                //JObject jObject = JObject.Parse(js);
+               // JToken jFisher = jObject["fisher"];
+                //Fisher fisher = new Fisher();
+                //fisher.Username = (string)jUser["username"];
+                //fisher.id = id;
+                //fisher.Gender = jFisher["gender"];
+                //fisher.SexPref = jFisher["sexprf"];
+                //fisher.FirstName = jFisher["firstname"];
+                //fisher.Surname = jFisher["surname"];
+                //fisher.Age = jFisher["age"];
+                //fisher.Description = jFisher["description"];
+                //user.Usertype = (string)jUser["role"];
+                //var token = (string)jUser["token"];
+            }else if(reply.Contains("role admin"))
+            {
+
+            }
+
             Fisher dummy = new Fisher();
-            dummy.Id = 24;
+            dummy.id = 9;
             dummy.Username = "dummy";
             dummy.Gender = 'F';
             return dummy;
         }
 
-        public bool UpdateFisher(string username, string password, char gender, char sexpf, string firstName, string surname, string email, int age, string description, bool isActive)
+        public bool UpdateFisher(int id, char sexpf, string password, string email, int age, string description, bool isActive)
         {
-            throw new NotImplementedException();
+            string req = sock.EditFisher(id, sexpf, password, email, age, description, isActive);
+
+            if (req.Contains("200"))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
