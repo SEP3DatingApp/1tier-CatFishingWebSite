@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using CatFishingWebSite.Model;
@@ -20,7 +19,7 @@ namespace CatFishingWebSite.Pages.AccountManage
         public void OnGet(int id)
         {
             fisher = webService.GetFisherByName(id);
-            Debug.WriteLine("OHOHOH"+fisher.FirstName);
+
             Username = CookieModel.userName;
         }
     }

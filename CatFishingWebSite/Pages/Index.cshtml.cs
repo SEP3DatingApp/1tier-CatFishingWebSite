@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using CatFishingWebSite.Model;
 using CatFishingWebSite.Services;
@@ -41,25 +40,11 @@ namespace CatFishingWebSite.Pages
         }
         public async Task<IActionResult> OnPostAsync()
         {
-           
             Debug.WriteLine("onpost for login");
             Debug.WriteLine("user name: " + user.Username);
-            bool  isint = true;
+
             string un = user.Username;
             string pwd = user.Password;
-        // check user input if int
-            try
-            {
-                Convert.ToInt32(un);
-               isint =  true;
-            }
-            catch { isint = false; }
-
-            if (un == null || pwd == null  || un=="" || isint)
-            {
-                errorMessage = "Username or password is reqired";
-                return Page();
-            }
 
             try { isLogin = webService.IsLogin(un, pwd); }
             catch (SocketException)

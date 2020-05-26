@@ -9,7 +9,7 @@
 
     <style>
         #login {
-            float: right;
+            float:right;
             text-align: center;
             color: red;
         }
@@ -19,22 +19,15 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">CatFishing</a>
 
                 @if (CatFishingWebSite.Model.CookieModel.isLogin)
                 {
-                    <a class="nav-link text-dark" asp-area="" asp-page="/Index">Log out</a>}
-                else
-                {<a class="navbar-brand" asp-area="" asp-page="/Index">CatFishing</a>}
-
-
-                @if (CatFishingWebSite.Model.CookieModel.isLogin)
-                {
-                    <a class="navbar-brand" asp-area="" asp-page="../Match/index" asp-route-id="@CatFishingWebSite.Model.CookieModel.id">Matching</a>
                     <a class="nav-link text-dark" asp-area="" asp-page="/AccountManage/index" asp-route-id="@CatFishingWebSite.Model.CookieModel.id">Welcome: @CatFishingWebSite.Model.CookieModel.userName</a>
                 }
                 else
                 {
-                    <a id="login" class="nav-link text-dark" asp-area="" asp-page="/Signup/index">Sign Up Now </a>
+            <a id="login" class="nav-link text-dark" asp-area="" asp-page="/Signup/index">Sign Up Now </a>
                 }
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +37,7 @@
 
 
             </div>
-
+            
         </nav>
     </header>
     <div class="container">

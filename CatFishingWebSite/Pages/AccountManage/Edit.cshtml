@@ -8,11 +8,10 @@
 
 <dl class="row">
     <dt class="col-sm-3">
-        @Html.DisplayNameFor(model => model.fisher.Username) :
-        @Html.DisplayFor(model => model.fisher.Username)
+        @Html.DisplayNameFor(model => model.fisher.Username)
     </dt>
     <dt class="col-sm-6">
-     Name :   @Html.DisplayFor(model => model.fisher.FirstName)
+     Name :   @Html.DisplayNameFor(model => model.fisher.FirstName) 
     
     </dt>
 
@@ -30,9 +29,9 @@
         <!-- <input type="submit" value="Upload" />-->
     </fieldset>
     <div class="form-group">
-        <label asp-for="fisher.Password" class="control-label">Chnage your password</label>
+        <label asp-for="fisher.Password" class="control-label"></label>
         <input type="password" asp-for="fisher.Password" class="form-control" />
-
+        <span asp-validation-for="fisher.Password" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="fisher.SexPref" class="control-label">Sexual orientation： </label>
@@ -46,29 +45,26 @@
     <div class="form-group">
         <label asp-for="fisher.Email" class="control-label"></label>
         <input asp-for="fisher.Email" class="form-control" />
-</div>
-    
-
+        <span asp-validation-for="fisher.Email" class="text-danger"></span>
+    </div>
     <div class="form-group">
         <label asp-for="fisher.Description" class="control-label"></label>
         <input asp-for="fisher.Description" class="form-control" />
-
+        <span asp-validation-for="fisher.Description" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="fisher.IsActive" class="control-label">Is active： </label>
+        <label asp-for="fisher.IsActive" class="control-label">Gender： </label>
 
         <label><input asp-for="fisher.IsActive" type="radio" value=true> Yes </label>
         <label><input asp-for="fisher.IsActive" type="radio" value=false> No </label>
 
-        <span asp-validation-for="fisher.IsActive" class="text-danger"></span>
+        <span asp-validation-for="fisher.Gender" class="text-danger"></span>
     </div>
     <div class="form-group">
         <br />
 
         <p></p>
         <input type="submit" value="submit" class="btn btn-primary" />
-        <br />
-        <a asp-page="./Index">Back to Detail</a>
         <br />
 
     </div>

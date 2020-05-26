@@ -55,19 +55,19 @@ namespace CatFishingWebSite.Pages.Signup
             {
                 return Page();
             }
-            if (fisher.SexPref != "M"&& fisher.SexPref != "F"&& fisher.SexPref != "B")
+            if (fisher.SexPref != 'M' && fisher.SexPref != 'F' && fisher.SexPref != 'B')
             {
                 errorMessage = "Select your gender or sexual preference";
                 return Page();
             }
-            if (fisher.Gender !="M" && fisher.Gender != "F")
+            if (fisher.Gender != 'M' && fisher.Gender != 'F')
             {
                 errorMessage = "Select your gender or sexual preference";
                 return Page();
             }
             successMessage = "Sign up now...";
             bool created;
-            try { created = webService.CreateUser(fisher.Username,fisher.FirstName,fisher.Age, fisher.Password, fisher.Gender, fisher.SexPref); }
+            try { created = webService.CreateUser(fisher.Username,fisher.FirstName, fisher.Password, fisher.Gender, fisher.SexPref); }
             catch (SocketException)
             {
                 return RedirectToPage("Error");
@@ -80,7 +80,7 @@ namespace CatFishingWebSite.Pages.Signup
                 
                 return RedirectToPage("./Success");
             }
-            errorMessage = "Username already exists or other error";
+            errorMessage = "Username already exists";
             return Page();
 
 

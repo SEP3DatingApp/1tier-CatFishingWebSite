@@ -3,11 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using CatFishingWebSite.Services;
-using Newtonsoft.Json.Linq;
 
 namespace CatFishingWebSite.Services
 {
-
+   
     public class WebService
     {
         // private static WebService instance = new WebService();
@@ -42,7 +41,7 @@ namespace CatFishingWebSite.Services
             Debug.WriteLine(username);
 
             User user = sock.LoginUser(username, password);
-
+          
             if (user != null && username == user.Username)
             {
                 return true;
@@ -51,9 +50,9 @@ namespace CatFishingWebSite.Services
 
         }
 
-        public bool CreateUser(string username, string firstname,int age, string password, string gender, string sexpf)
+        public bool CreateUser(string username,string firstname, string password,char gender,char sexpf)
         {
-            string reply = sock.Create(username, firstname,age, password, gender, sexpf);
+            string reply =  sock.Create(username,firstname, password, gender, sexpf);
             if (reply.Contains("200"))
             {
                 return true;
@@ -63,36 +62,41 @@ namespace CatFishingWebSite.Services
 
         public Fisher GetFisherByName(int id)
         {
-            Fisher fisher = new Fisher();
+            
             string reply = sock.GetFisher(id);
-            if (reply.Contains("ResponseCode"))
+
+            if (reply.Contains("role fisher"))
             {
-                Debug.WriteLine("Failed to get fisher");
-                return fisher;
+                //string js = @"{""fisher"":" + recvStr + "}";
+                //Debug.WriteLine(js);
+                //JObject jObject = JObject.Parse(js);
+               // JToken jFisher = jObject["fisher"];
+                //Fisher fisher = new Fisher();
+                //fisher.Username = (string)jUser["username"];
+                //fisher.id = id;
+                //fisher.Gender = jFisher["gender"];
+                //fisher.SexPref = jFisher["sexprf"];
+                //fisher.FirstName = jFisher["firstname"];
+                //fisher.Surname = jFisher["surname"];
+                //fisher.Age = jFisher["age"];
+                //fisher.Description = jFisher["description"];
+                //user.Usertype = (string)jUser["role"];
+                //var token = (string)jUser["token"];
+            }else if(reply.Contains("role admin"))
+            {
+
             }
 
-            string js = @"{""fisher"":" + reply + "}";
-            Debug.WriteLine(js);
-            JObject jObject = JObject.Parse(js);
-            JToken jFisher = jObject["fisher"];
-             
-            fisher.Username = (string)jFisher["username"];
-            fisher.id = id;
-            fisher.IsActive = (bool)jFisher["isActive"];
-            fisher.Email =(string) jFisher["email"];
-            fisher.Gender = (string)jFisher["gender"];
-            fisher.SexPref = (string)jFisher["sexPref"];
-            fisher.FirstName = (string)jFisher["firstName"];
-            fisher.Age = (int)jFisher["age"];
-            fisher.Description = (string)jFisher["description"];
-
-
-            return fisher;
+            Fisher dummy = new Fisher();
+            dummy.id = 9;
+            dummy.Username = "dummy";
+            dummy.Gender = 'F';
+            return dummy;
         }
 
-        public bool UpdateFisher(int id, string sexpf, string password, string email, string description, bool isActive)
+        public bool UpdateFisher(int id, char sexpf, string password, string email, int age, string description, bool isActive)
         {
-            string req = sock.EditFisher(id, sexpf, password, email, description, isActive);
+            string req = sock.EditFisher(id, sexpf, password, email, age, description, isActive);
 
             if (req.Contains("200"))
             {
