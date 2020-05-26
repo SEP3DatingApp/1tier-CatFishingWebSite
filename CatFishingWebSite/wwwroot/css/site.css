@@ -13,9 +13,23 @@ a {
 }
 
 .btn-primary {
-  color: #fff;
+    /*color: #fff;
   background-color: #1b6ec2;
-  border-color: #1861ac;
+  border-color: #1861ac;*/
+    display: block;
+    width: 50%;
+    height: 50px;
+    border: none;
+    background: linear-gradient(#806f437a,#584f358f, #0a0802a8);
+    background-size: 200%;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    transition: .5s;
+}
+
+btn-primary:hover{
+    background-position: right;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -59,14 +73,82 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-image: linear-gradient(#e7d4a07a,#b7a6819e, #9c721236);
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    background: #2d26182e;
 }
+
+/*.login-form {
+    width: 360px;
+    background: #f1f1f1;
+    height: 580px;
+    padding: 80px 40px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.login-form h4 {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.control-label {
+    border-bottom: 2px solid #adadad;
+    position: relative;
+    margin: 30px 0;
+}
+
+.control-label input {
+    font-size: 15px;
+    color: #333;
+    border: none;
+    width: 100%;
+    outline: none;
+    background: none;
+    padding: 0 5px;
+    height: 40px;
+ }
+
+.control-label::before {
+    content: attr(data-placeholder);
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    z-index: -1;
+    transition: .5s;
+}
+
+.control-label::after {
+    content: '';
+    position: absolute;
+    bottom: 0%;
+    border-bottom: 2px;
+    left: 0px;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(120deg, #3498db, #8e44ad);
+    transition: .5s;
+}
+
+.focus + span::before {
+    top: -5px;
+}
+
+.focus + span::after {
+    width: 100%;
+} */
+
 
