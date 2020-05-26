@@ -28,13 +28,13 @@
             @Html.DisplayNameFor(model => model.fisher.Gender)
         </dt>
         <dd class="col-sm-10">
-            @Model.Gend
+            @Html.DisplayFor(model => model.fisher.Gender)
         </dd>
         <dt class="col-sm-2">
-            Sexual orientation：
+            @Html.DisplayNameFor(model => model.fisher.SexPref)
         </dt>
         <dd class="col-sm-10">
-            @Model.SexP
+            @Html.DisplayFor(model => model.fisher.SexPref)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.fisher.Email)
@@ -46,7 +46,7 @@
             @Html.DisplayNameFor(model => model.fisher.IsActive)
         </dt>
         <dd class="col-sm-10">
-            @Model.isAct
+            @Html.DisplayFor(model => model.fisher.IsActive)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.fisher.Description)
