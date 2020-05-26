@@ -17,11 +17,41 @@ namespace CatFishingWebSite.Pages.AccountManage
        
         public Fisher fisher { get; set; }
         string Username { get; set; }
+       public string isAct { get; set; }
+        public string Gend { get; set; }
+        public string SexP { get; set; }
         public void OnGet(int id)
         {
             fisher = webService.GetFisherByName(id);
-            Debug.WriteLine("OHOHOH"+fisher.FirstName);
-            Username = CookieModel.userName;
+            //Username = CookieModel.userName;
+            if (fisher.IsActive)
+            {
+                isAct = "Active";
+            }
+            else
+            {
+                isAct = "Not active";
+            }
+
+            if (fisher.Gender.Contains("M"))
+            {
+                Gend = "Male";
+            }
+            else
+            {
+                Gend = "Female";
+            }
+            if (fisher.SexPref.Contains("M"))
+            {
+                SexP = "Man";
+            }else if (fisher.SexPref.Contains("B"))
+            {
+                SexP = "Both Woman and Man";
+            }
+            else
+            {
+                SexP = "Woman";
+            }
         }
     }
 }
