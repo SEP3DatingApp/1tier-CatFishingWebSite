@@ -34,24 +34,24 @@ namespace CatFishingWebSite.Services
             }
         }
 
-        public string Create(string username,string firstname, string password, char gender, char sexpf)
+        public string Create(string username,string firstname, int age,string password, string gender, string sexpf)
         {
             Request request = new Request()
             {
                 Type = RequestTypes.CREATEUSER.ToString(),
-                Args = new Fisher { Username = username, FirstName = firstname ,Password = password, Gender = gender, SexPref = sexpf, IsActive = true }
+                Args = new Fisher { Username = username, FirstName = firstname ,Password = password,Age = age, Gender = gender, SexPref = sexpf, IsActive = true }
             };
             string recvStr = SendReceive(request);
             Debug.WriteLine("DATA RECEIVED====" + recvStr);
             return recvStr;
         }
 
-        public string EditFisher(int id, char sexpf, string password, string email, int age, string description, bool isActive)
+        public string EditFisher(int id, string sexpf, string password, string email, string description, bool isActive)
         {
             Request request = new Request()
             {
                 Type = RequestTypes.EDITFISHER.ToString(),
-                Args = new Fisher { id = id, SexPref = sexpf, IsActive = true, Password = password, Email = email, Age = age, Description = description, token = CookieModel.token }
+                Args = new Fisher { id = id, SexPref = sexpf, IsActive = isActive, Password = password, Email = email, Description = description, token = CookieModel.token }
             };
             string recvStr = SendReceive(request);
             Debug.WriteLine("DATA RECEIVED====" + recvStr);
@@ -60,11 +60,11 @@ namespace CatFishingWebSite.Services
 
         public string GetFisher(int id)
         {
-            // get fisher by name
+            // get fisher by id
             Request request = new Request()
             {
                 Type = RequestTypes.GETFISHER.ToString(),
-                Args = new Fisher { Gender = 'M', id = id, token = CookieModel.token }
+                Args = new Fisher { id = id, token = CookieModel.token }
             };
             string recvStr = SendReceive(request);
             Debug.WriteLine("DATA RECEIVED====" + recvStr);

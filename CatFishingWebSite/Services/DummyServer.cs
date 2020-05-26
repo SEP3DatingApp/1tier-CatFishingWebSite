@@ -16,7 +16,7 @@ namespace CatFishingWebSite.Services
           
             dummy.Username = "dummy";
             dummy.Password = "password";
-            dummy.SexPref = 'f';
+            dummy.SexPref = "f";
             dummy.FirstName = "Dummy";
            
             dummy.Age = 23;

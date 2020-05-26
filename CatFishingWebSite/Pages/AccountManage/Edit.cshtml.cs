@@ -23,15 +23,21 @@ namespace CatFishingWebSite.Pages.AccountManage
 
         public void OnGet(int id)
         {
-           
+            Debug.WriteLine("ID: " + id);
             fisher = webService.GetFisherByName(id);
-
+            CookieModel.id = id;
             Username = CookieModel.userName;
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            try {  isUpdate = webService.UpdateFisher(CookieModel.id, fisher.SexPref, fisher.Password, fisher.Email, fisher.Age, fisher.Description, fisher.IsActive); }
+            if(string.IsNullOrEmpty(fisher.Password))
+            {
+                fisher.Password = null;
+            }
+            Debug.WriteLine(fisher.IsActive);
+            bool isa = fisher.IsActive;
+            try {  isUpdate = webService.UpdateFisher(CookieModel.id, fisher.SexPref, fisher.Password, fisher.Email, fisher.Description,isa); }
             catch (SocketException)
             {
                 return Redirect("../error");
@@ -39,6 +45,7 @@ namespace CatFishingWebSite.Pages.AccountManage
             if (isUpdate)
             {
                 Debug.WriteLine("change successfully");
+                return RedirectToPage("./Success");
             }
 
             return Page();
