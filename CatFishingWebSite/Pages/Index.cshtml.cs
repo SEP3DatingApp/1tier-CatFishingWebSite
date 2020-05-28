@@ -16,7 +16,7 @@ namespace CatFishingWebSite.Pages
     public class IndexModel : PageModel
 
     {
-        private static readonly WebService webService = new WebService();
+        private static readonly WebService webService = WebService.getInstance();
         // private static readonly DummyServer dummy = new DummyServer();
 
 
@@ -47,15 +47,22 @@ namespace CatFishingWebSite.Pages
             bool  isint = true;
             string un = user.Username;
             string pwd = user.Password;
-        // check user input if int
-            try
+            // check user input if int
+            int tmp;
+            if (!int.TryParse(un, out tmp))
             {
-                Convert.ToInt32(un);
-               isint =  true;
+                isint = false;
             }
-            catch { isint = false; }
-
-            if (un == null || pwd == null  || un=="" || isint)
+            else
+            {
+                isint = true ;
+            }
+            if (isint)
+            {
+                errorMessage = "Please type the right format of username";
+                return Page();
+            }
+            if (un == null || pwd == null  || un==""   )
             {
                 errorMessage = "Username or password is reqired";
                 return Page();

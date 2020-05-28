@@ -10,12 +10,12 @@ namespace CatFishingWebSite.Services
 
     public class WebService
     {
-        // private static WebService instance = new WebService();
+        private static WebService instance = new WebService();
 
-        //public static WebService getInstance()
-        //{
-        //    return instance;
-        //}
+        public static WebService getInstance()
+        {
+            return instance;
+        }
 
         public Sockets sock { get; set; }
         public WebService()

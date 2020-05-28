@@ -34,6 +34,7 @@ namespace CatFishingWebSite.Model
         [Required]
         public string SexPref { get; set; }
         public string PicRef { get; set; }
+        [Range(18, 100)]
         public int Age { get; set; }
         public string Description { get; set; }
         [DefaultValue(true)]
