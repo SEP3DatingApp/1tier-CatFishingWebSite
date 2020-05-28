@@ -12,7 +12,7 @@ namespace CatFishingWebSite.Pages.AccountManage
 {
     public class indexModel : PageModel
     {
-        private static readonly WebService webService = new WebService();
+        private static readonly WebService webService = WebService.getInstance();
 
        
         public Fisher fisher { get; set; }
