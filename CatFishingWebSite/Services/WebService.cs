@@ -10,7 +10,7 @@ namespace CatFishingWebSite.Services
 
     public class WebService
     {
-        private static WebService instance = WebService.getInstance();
+        private static WebService instance = new WebService();
 
         public static WebService getInstance()
         {
@@ -24,7 +24,7 @@ namespace CatFishingWebSite.Services
             //192.168.1.142
             //localhost
             //
-            sock = new Sockets("192.168.1.143 ", 5000);
+            sock = new Sockets("192.168.1.143", 5000);
         }
         public List<User> getAllUsers()
         {
@@ -105,7 +105,7 @@ namespace CatFishingWebSite.Services
         public void Logout()
         {
             Debug.WriteLine("user ready to logout");
-          //sock.Logout();
+          sock.Logout();
         }
     }
 }
