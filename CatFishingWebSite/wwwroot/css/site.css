@@ -86,14 +86,6 @@ body {
 
 }
 
-#loginform {
-    width: 360px;
-    background: #f1f1f14d;
-    height: 450px;
-    padding: 60px 40px;
-    border-radius: 10px;
-}
-
 .bottom-text {
     margin-bottom: 20px;
     font-size: 13px;
@@ -123,4 +115,14 @@ body {
     color: #495057;
     background-color: #fff0;
     border: 1px solid #ced4da;
+}
+
+#loginform {
+    width: 360px;
+    background: #f1f1f14d;
+    height: 450px;
+    padding: 60px 40px;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 2%;
 }
