@@ -55,7 +55,7 @@ html {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
     .col-md-5 {
         position: absolute;
         left: 50%;
