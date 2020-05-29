@@ -35,11 +35,12 @@ namespace CatFishingWebSite.Pages
 
         public void OnGet()
         {
+           // webService.Logout();
             CookieModel.isLogin = false;
             CookieModel.userName = null;
             Console.WriteLine("on get for login");
         }
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostLogin()
         {
            
             Debug.WriteLine("onpost for login");
@@ -87,7 +88,10 @@ namespace CatFishingWebSite.Pages
             return Page();
 
         }
-
+        public void OnPostLogout()
+        {
+            Debug.WriteLine("+++ON POST LOG OUT ");
+        }
         public string getUserName()
         {
 

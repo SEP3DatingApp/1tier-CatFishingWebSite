@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Services
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,7 +11,6 @@
     <style>
         #login {
             float: right;
-            text-align: center;
             color: red;
         }
     </style>
@@ -22,7 +22,9 @@
 
                 @if (CatFishingWebSite.Model.CookieModel.isLogin)
                 {
-                    <a class="nav-link text-dark" asp-area="" asp-page="/Index">Log out</a>}
+                <form asp-page-handler="logout" method="post">   <button class="btn btn-default"   asp-page="../index">Log out</button></form>
+                }
+
                 else
                 {<a class="navbar-brand" asp-area="" asp-page="/Index">CatFishing</a>}
 
@@ -58,6 +60,18 @@
             &copy; 2020 - CatFishingWebSite - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
+
+
+    @*<script>
+            document.getElementById("logout").onclick = function () {
+                @{
+                    WebService webService = WebService.getInstance();
+                    webService.Logout();
+                }
+            }
+
+        </script>*@
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

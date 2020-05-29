@@ -23,8 +23,8 @@ namespace CatFishingWebSite.Services
             //192.168.1.144
             //192.168.1.142
             //localhost
-            //192.168.1.142
-            sock = new Sockets("192.168.1.143", 5000);
+            //192.168.1.143
+            sock = new Sockets("localhost", 5000);
         }
         public List<User> getAllUsers()
         {
@@ -100,6 +100,12 @@ namespace CatFishingWebSite.Services
                 return true;
             }
             return false;
+        }
+
+        public void Logout()
+        {
+            Debug.WriteLine("user ready to logout");
+          //  sock.Logout();
         }
     }
 }
