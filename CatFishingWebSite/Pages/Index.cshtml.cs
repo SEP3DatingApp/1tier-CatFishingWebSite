@@ -16,7 +16,7 @@ namespace CatFishingWebSite.Pages
     public class IndexModel : PageModel
 
     {
-        private static readonly WebService webService = WebService.getInstance();
+        private static readonly WebService webService = new WebService();
         // private static readonly DummyServer dummy = new DummyServer();
 
 

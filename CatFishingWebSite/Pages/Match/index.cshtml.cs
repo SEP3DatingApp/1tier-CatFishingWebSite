@@ -41,11 +41,19 @@ namespace CatFishingWebSite.Pages.Match
             return Redirect("../index}");
         }
 
-        public void OnPostLogout()
+       public RedirectResult OnPostLike()
         {
-            Debug.WriteLine("+++LOG OUTTTTTTTTTTT");
+            return Redirect("../index}");
+        }
 
-            webService.Logout();
+        public void OnPostSkip()
+        {
+
+        }
+
+        public void OnPostRefuse()
+        {
+
         }
     }
 }

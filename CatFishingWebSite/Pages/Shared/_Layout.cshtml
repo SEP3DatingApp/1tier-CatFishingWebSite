@@ -22,7 +22,7 @@
 
                 @if (CatFishingWebSite.Model.CookieModel.isLogin)
                 {
-                <form asp-page-handler="logout" method="post">   <button class="btn btn-default"   asp-page="../index">Log out</button></form>
+                   <a class="nav-link text-dark"    asp-page="../Logout">Log out</a>
                 }
 
                 else

@@ -74,6 +74,7 @@ namespace CatFishingWebSite.Services
 
         public User LoginUser(string username, string password)
         {
+
             Request request = new Request()
             {
                 Type = RequestTypes.LOGIN.ToString(),
