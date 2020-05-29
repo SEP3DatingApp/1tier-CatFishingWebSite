@@ -50,19 +50,19 @@ html {
 }
 
 @media screen and (max-width: 600px) {
-    .carousel-inner {
+    .carousel-inner, .col-md-1 {
         display: none;
     }
 }
 
-@media screen and (max-width: 600px) {
+/*@media screen and (max-width: 600px) {
     .col-md-5 {
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%,-50%);
     }
-}
+}*/
 
 .border-top {
   border-top: 1px solid #e5e5e5;
@@ -107,10 +107,6 @@ body {
     height: 450px;
     padding: 60px 40px;
     border-radius: 10px;
-    position: absolute;
-    left: 75%;
-    top: 50%;
-    transform: translate(-50%,-50%);
 }
 
 .bottom-text {
