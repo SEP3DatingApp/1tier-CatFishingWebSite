@@ -14,6 +14,12 @@ namespace CatFishingWebSite.Services
         CREATEUSER,
         //edit
         EDITFISHER,
-        GETFISHER
+        GETFISHER,
+        //Match
+        MATCHLIST,
+        LIKE,
+        REJECT
+        //Chat
+
     }
 }
