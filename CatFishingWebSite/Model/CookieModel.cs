@@ -17,5 +17,7 @@ namespace CatFishingWebSite.Model
 
         // store token after login
         public static string token { get; set; }
+
+        public static bool logout{ get; set; }
     }
 }

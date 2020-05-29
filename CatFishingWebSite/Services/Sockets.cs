@@ -113,6 +113,18 @@ namespace CatFishingWebSite.Services
             }
             return null;
         }
+
+        public void Logout()
+        {
+            Request request = new Request()
+            {
+                
+            Type = RequestTypes.LOGOUT.ToString(),
+                Args = new User {}
+            };
+            SendReceive(request);
+        }
+
         private string SendReceive(Request request)
         {
             var json = System.Text.Json.JsonSerializer.Serialize(request);
