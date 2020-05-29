@@ -84,6 +84,7 @@ namespace CatFishingWebSite.Services
 
             if (recvStr.Contains("Username or password is incorrect"))
             {
+                
                 return null;
             }
 
@@ -136,7 +137,7 @@ namespace CatFishingWebSite.Services
             //send
             client.Send(byData);
 
-            Debug.Write("data have been sent");
+            Debug.WriteLine("data have been sent");
 
             json = Encoding.ASCII.GetString(byData);
             //receive
