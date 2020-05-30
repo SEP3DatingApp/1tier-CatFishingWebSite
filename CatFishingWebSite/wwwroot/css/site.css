@@ -127,12 +127,13 @@ body {
 }
 
 #Matchbutton {
+    
     width: 100px;
     height: 100px;
     cursor: pointer;
     transition: .5s;
 }
     #Matchbutton:hover {
-        transform: scale(1.4);
+        transform: scale(1.1);
         
     }

@@ -101,6 +101,19 @@ namespace CatFishingWebSite.Services
             }
             return false;
         }
+        public void GetFishersList(int id)
+        {
+
+        }
+
+        public void LikeFisher(int id)
+        {
+
+        }
+        public void RejectFisher(int id)
+        {
+
+        }
 
         public void Logout()
         {
