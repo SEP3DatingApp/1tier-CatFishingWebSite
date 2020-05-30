@@ -7,11 +7,11 @@ namespace CatFishingWebSite.Model
 {
     public class MatchModel
     {
-        private int PrimeId { get; set; }
+        public int PrimeId { get; set; }
 
-        private int OtherId { get; set; }
+        public int OtherId { get; set; }
 
-        private string Token { get; set; }
+        public string Token { get; set; }
 
     }
 }

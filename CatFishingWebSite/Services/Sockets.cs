@@ -8,6 +8,7 @@ using System.Linq;
 // NuGet command to install for edcode token , command below
 // Install-Package jose-jwt -Version 2.5.0
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 
 namespace CatFishingWebSite.Services
 {
@@ -34,12 +35,12 @@ namespace CatFishingWebSite.Services
             }
         }
 
-        public string Create(string username,string firstname, int age,string password, string gender, string sexpf)
+        public string Create(string username, string firstname, int age, string password, string gender, string sexpf)
         {
             Request request = new Request()
             {
                 Type = RequestTypes.CREATEUSER.ToString(),
-                Args = new Fisher { Username = username, FirstName = firstname ,Password = password,Age = age, Gender = gender, SexPref = sexpf, IsActive = true }
+                Args = new Fisher { Username = username, FirstName = firstname, Password = password, Age = age, Gender = gender, SexPref = sexpf, IsActive = true }
             };
             string recvStr = SendReceive(request);
             Debug.WriteLine("DATA RECEIVED====" + recvStr);
@@ -72,6 +73,7 @@ namespace CatFishingWebSite.Services
             return recvStr;
         }
 
+
         public User LoginUser(string username, string password)
         {
 
@@ -84,7 +86,7 @@ namespace CatFishingWebSite.Services
 
             if (recvStr.Contains("Username or password is incorrect"))
             {
-                
+
                 return null;
             }
 
@@ -119,11 +121,49 @@ namespace CatFishingWebSite.Services
         {
             Request request = new Request()
             {
-                
-            Type = RequestTypes.LOGOUT.ToString(),
-                Args = new User {}
+
+                Type = RequestTypes.LOGOUT.ToString(),
+                Args = new User { }
             };
             SendReceive(request);
+        }
+
+        public string GetMatchList(int id)
+        {
+            Request request = new Request()
+            {
+
+                Type = RequestTypes.MATCHLIST.ToString(),
+                Args = id
+            };
+            string recvStr = SendReceive(request);
+          
+            return recvStr;
+        }
+
+        public string Like(int id, int otherId)
+        {
+            Request request = new Request()
+            {
+
+                Type = RequestTypes.LIKE.ToString(),
+                Args = new MatchModel { PrimeId =id,OtherId = otherId,Token = CookieModel.token}
+            };
+            string recvStr = SendReceive(request);
+
+            return recvStr;
+        }
+        public string Reject(int id, int otherId)
+        {
+            Request request = new Request()
+            {
+
+                Type = RequestTypes.REJECT.ToString(),
+                Args = new MatchModel { PrimeId = id, OtherId = otherId, Token = CookieModel.token }
+            };
+            string recvStr = SendReceive(request);
+
+            return recvStr;
         }
 
         private string SendReceive(Request request)

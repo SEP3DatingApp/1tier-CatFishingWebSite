@@ -23,7 +23,7 @@ namespace CatFishingWebSite.Pages.Match
             Debug.WriteLine("OI " + otherId);
             if (!CookieModel.isLogin)
             {
-
+                Debug.WriteLine("User start matching without logging in");
             }
         }
 

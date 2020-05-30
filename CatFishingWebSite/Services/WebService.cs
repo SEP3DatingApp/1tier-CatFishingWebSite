@@ -101,24 +101,34 @@ namespace CatFishingWebSite.Services
             }
             return false;
         }
-        public void GetFishersList(int id)
-        {
-
-        }
-
-        public void LikeFisher(int id)
-        {
-            Debug.WriteLine("Like");
-        }
-        public void RejectFisher(int id)
-        {
-            Debug.WriteLine("Reject");
-        }
+   
 
         public void Logout()
         {
             Debug.WriteLine("user ready to logout");
           sock.Logout();
+        }
+        //method for Match
+
+        //get list of ID which match with primeUser
+ public void GetFishersList(int id)
+        {
+
+        }
+        // like fisher 
+        public void LikeFisher(int primeId ,int otherId)
+        {
+            Debug.WriteLine("Like");
+        }
+        //reject fisher
+        public void RejectFisher(int primeId,int otherid)
+        {
+            Debug.WriteLine("Reject");
+        }
+
+        public List<Fisher> GetLikeMeBackList(int id)
+        {
+            return null;
         }
     }
 }
