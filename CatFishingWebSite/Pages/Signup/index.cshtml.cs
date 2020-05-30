@@ -38,6 +38,11 @@ namespace CatFishingWebSite.Pages.Signup
             //    errorMessage = "Username already exists";
             //    return Page();
             //}
+            if (!CookieModel.isLogin)
+            {
+                errorMessage = "Please log in";
+                return Page();
+            }
             if (fisher.Password != passwordAgain)
             {
                 errorMessage = "Passwords doesn't match, please type the right passwords again";

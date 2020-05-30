@@ -18,6 +18,10 @@ namespace CatFishingWebSite.Model
         // store token after login
         public static string token { get; set; }
 
+        public static List<int> otherIdsMatched { get; set; }
+
         public static bool logout{ get; set; }
+
+        public static int count  { get; set; }
     }
 }

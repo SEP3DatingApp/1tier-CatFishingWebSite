@@ -108,11 +108,11 @@ namespace CatFishingWebSite.Services
 
         public void LikeFisher(int id)
         {
-
+            Debug.WriteLine("Like");
         }
         public void RejectFisher(int id)
         {
-
+            Debug.WriteLine("Reject");
         }
 
         public void Logout()

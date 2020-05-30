@@ -7,6 +7,7 @@ using CatFishingWebSite.Model;
 using CatFishingWebSite.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace CatFishingWebSite.Pages.Match
 {
@@ -16,44 +17,62 @@ namespace CatFishingWebSite.Pages.Match
         private WebService webService = WebService.getInstance();
         public User user { get; set; }
         public string Title { get; set; }
-        //public void OnGet(string ? username)
-        //{ 
-
-        //}
-        String message;
-        public async Task<IActionResult> OnGetAsync(int id)
+        public void OnGet(int id,int otherId)
         {
-
-            Console.WriteLine(id);
-            message = "hello user ";
-            if (id == 0)
+            Debug.WriteLine("ID: "+id);
+            Debug.WriteLine("OI " + otherId);
+            if (!CookieModel.isLogin)
             {
-                return NotFound();
+
             }
-
-
-
-
-            return Page();
         }
+
+
+
+        String message;
+        //public async Task<IActionResult> OnGetAsync(int id,int otherId)
+        //{
+
+        //    Console.WriteLine(id);
+        //    message = "hello user ";
+        //    if (id == 0)
+        //    {
+        //        return NotFound();
+        //    }
+
+
+
+
+        //    return Page();
+        //}
         public async Task<IActionResult> OnPostAsync()
         {
-            return Redirect("../index}");
+            Debug.WriteLine("shit a fisher");
+            return Redirect("../index");
         }
 
-       public RedirectResult OnPostLike()
+        public RedirectResult OnPostLike (int id, int otherId)
         {
-            return Redirect("../index}");
+            Debug.WriteLine("ID: " + id);
+            Debug.WriteLine("OI " + otherId);
+            Debug.WriteLine("like a fisher");
+            return Redirect("./Chat");
+           
+
         }
 
         public void OnPostSkip()
         {
-
+            Debug.WriteLine("Skip a fisher");
+        }
+        public void OnPostBack()
+        {
+            Debug.WriteLine("Back a fisher");
         }
 
-        public void OnPostRefuse()
+        public void OnPostRefuse(int id, int otherId)
         {
-
+            Debug.WriteLine("Skip a fisher");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@page "{id}"
+﻿@page "{id}&{otherId}" 
 @RouteData.Values["title"]
 @model CatFishingWebSite.Pages.Match.indexModel
 @{
@@ -7,7 +7,20 @@
 }
 
 <h1>Hello  @CatFishingWebSite.Model.CookieModel.userName , find your date</h1>
-<p></p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"> <input type="image" src="~/images/Back.png" name="Back" id="Matchbutton" title="Back" /></div>
+        <div class="col-md-2"> <input type="image" src="~/images/refuse.png" name="Reject" id="Matchbutton" title="Reject" /></div>
+        <div class="col-md-2">
+            <form method="post" asp-page-handler="Like">  <input type="image" src="~/images/love.png" name="Like" id="Matchbutton" title="Like" /></form>
+
+
+        </div>
+        <div class="col-md-2">  <input type="image" src="~/images/skip.png" name="Skip" id="Matchbutton" title="Skip" /></div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
 
 
 

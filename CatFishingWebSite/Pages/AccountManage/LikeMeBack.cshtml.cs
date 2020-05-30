@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace CatFishingWebSite.Pages
+namespace CatFishingWebSite.Pages.AccountManage
 {
-    //get all users from database
-    public class UsersListModel : PageModel
+    public class LikeMeBackModel : PageModel
     {
         public void OnGet()
         {
