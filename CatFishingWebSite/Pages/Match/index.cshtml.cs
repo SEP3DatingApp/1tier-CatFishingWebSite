@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using CatFishingWebSite.Model;
 using CatFishingWebSite.Services;
@@ -26,7 +27,12 @@ namespace CatFishingWebSite.Pages.Match
             Debug.WriteLine("OI " + otherId);
             if (CookieModel.isLogin)
             {
-                fisher = webService.GetFisherByName(CookieModel.otherIdsMatched[CookieModel.count]);
+                try { fisher = webService.GetFisherByName(CookieModel.otherIdsMatched[CookieModel.count]); }
+                catch (SocketException)
+                {
+                    Debug.WriteLine("Error socket");
+                }
+
             }
             else
             {
@@ -35,19 +41,6 @@ namespace CatFishingWebSite.Pages.Match
 
         }
 
-        //public async Task<IActionResult> OnGetAsync(int id,int otherId)
-        //{
-
-        //    Console.WriteLine(id);
-        //    message = "hello user ";
-        //    if (id == 0)
-        //    {
-        //        return NotFound();
-        //    }
-
-
-        //    return Page();
-        //}
         public async Task<IActionResult> OnPostAsync()
         {
             Debug.WriteLine("shit a fisher");
@@ -56,11 +49,9 @@ namespace CatFishingWebSite.Pages.Match
 
         public RedirectResult OnPostLike(int id, int otherId)
         {
-
             Debug.WriteLine("like a fisher");
             webService.LikeFisher(id, otherId);
             return Redirect("./Chat");
-
         }
 
         public RedirectResult OnPostSkip(int id, int otherId)
@@ -74,16 +65,16 @@ namespace CatFishingWebSite.Pages.Match
             return Redirect("./" + id + "&" + otherId);
         }
 
-        public RedirectResult OnPostBack(int id, int otherId)
-        {
-            if (CookieModel.count-- < 0)
-            {
-                int back = CookieModel.otherIdsMatched[CookieModel.count--];
-                Debug.WriteLine("Back a fisher");
-                return Redirect("./" + id + "&" + back);
-            }
-            return Redirect("./" + id + "&" + otherId);
-        }
+        //public RedirectResult OnPostBack(int id, int otherId)
+        //{
+        //    if (CookieModel.count-- < 0)
+        //    {
+        //        int back = CookieModel.otherIdsMatched[CookieModel.count--];
+        //        Debug.WriteLine("Back a fisher");
+        //        return Redirect("./" + id + "&" + back);
+        //    }
+        //    return Redirect("./" + id + "&" + otherId);
+        //}
 
         public RedirectResult OnPostRefuse(int id, int otherId)
         {

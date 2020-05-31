@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using CatFishingWebSite.Services;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace CatFishingWebSite.Services
 {
@@ -114,18 +115,24 @@ namespace CatFishingWebSite.Services
  public List<int> GetFishersList(int id)
         {
             string json = sock.GetMatchList(id);
+            List<int> model = JsonConvert.DeserializeObject<List<int>>(json);
             Debug.WriteLine(json);
-            return null;
+            return model;
         }
         // like fisher 
         public void LikeFisher(int primeId ,int otherId)
         {
             Debug.WriteLine("Like");
+           string re =  sock.Like(primeId, otherId);
+            Debug.WriteLine(re);
+            
         }
         //reject fisher
         public void RejectFisher(int primeId,int otherid)
         {
             Debug.WriteLine("Reject");
+            string re = sock.Reject(primeId, otherid);
+            Debug.WriteLine(re);
         }
 
         public List<Fisher> GetLikeMeBackList(int id)

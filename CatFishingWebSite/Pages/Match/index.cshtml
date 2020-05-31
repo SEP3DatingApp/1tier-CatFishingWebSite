@@ -9,22 +9,31 @@
 <h1>Hello  @CatFishingWebSite.Model.CookieModel.userName , find your date</h1>
 <div class="container">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-2">
-            <form method="post" asp-page-handler="Back"><input type="image" src="~/images/Back.png" name="Back" id="Matchbutton" title="Back" /></form>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"><h5>Say hello to </h5></div>
+        <div class="col-md-3">
+            <h3>  @Html.DisplayFor(model => model.fisher.Username)</h3>
         </div>
-        <div class="col-md-2">    
-        <form method="post" asp-page-handler="Refuse"><input type="image" src="~/images/refuse.png" name="Reject" id="Matchbutton" title="Reject" /></form>
-        </div>
-        <div class="col-md-2">
-           <form method="post" asp-page-handler="Like">  <input type="image" src="~/images/love.png" name="Like" id="Matchbutton" title="Like" /></form>
-        </div>
-        <div class="col-md-2">     
-        <form method="post" asp-page-handler="Skip"> <input type="image" src="~/images/skip.png" name="Skip" id="Matchbutton" title="Skip" /></form>
-        </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-3"></div>
     </div>
-</div>
+    <div class="row">
+
+    </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+
+            <div class="col-md-2">
+                <form method="post" asp-page-handler="Refuse"><input type="image" src="~/images/refuse.png" name="Reject" id="Matchbutton" title="Reject" /></form>
+            </div>
+            <div class="col-md-2">
+                <form method="post" asp-page-handler="Like">  <input type="image" src="~/images/love.png" name="Like" id="Matchbutton" title="Like" /></form>
+            </div>
+            <div class="col-md-2">
+                <form method="post" asp-page-handler="Skip"> <input type="image" src="~/images/skip.png" name="Skip" id="Matchbutton" title="Skip" /></form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
 
 
 
