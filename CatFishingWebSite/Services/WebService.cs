@@ -111,9 +111,9 @@ namespace CatFishingWebSite.Services
         //method for Match
 
         //get list of ID which match with primeUser
- public void GetFishersList(int id)
+ public List<int> GetFishersList(int id)
         {
-
+            return null;
         }
         // like fisher 
         public void LikeFisher(int primeId ,int otherId)

@@ -14,22 +14,27 @@ namespace CatFishingWebSite.Pages.Match
     // match page for fisher , provide users after fitter
     public class indexModel : PageModel
     {
+        public string errorMessage;
         private WebService webService = WebService.getInstance();
-        public User user { get; set; }
+        [BindProperty]
+        public Fisher fisher { get; set; }
+
         public string Title { get; set; }
-        public void OnGet(int id,int otherId)
+        public void OnGet(int id, int otherId)
         {
-            Debug.WriteLine("ID: "+id);
+            Debug.WriteLine("ID: " + id);
             Debug.WriteLine("OI " + otherId);
-            if (!CookieModel.isLogin)
+            if (CookieModel.isLogin)
             {
-                Debug.WriteLine("User start matching without logging in");
+                fisher = webService.GetFisherByName(CookieModel.otherIdsMatched[CookieModel.count]);
             }
+            else
+            {
+                errorMessage = "Please login to find your match";
+            }
+
         }
 
-
-
-        String message;
         //public async Task<IActionResult> OnGetAsync(int id,int otherId)
         //{
 
@@ -41,8 +46,6 @@ namespace CatFishingWebSite.Pages.Match
         //    }
 
 
-
-
         //    return Page();
         //}
         public async Task<IActionResult> OnPostAsync()
@@ -51,13 +54,13 @@ namespace CatFishingWebSite.Pages.Match
             return Redirect("../index");
         }
 
-        public RedirectResult OnPostLike (int id, int otherId)
+        public RedirectResult OnPostLike(int id, int otherId)
         {
             Debug.WriteLine("ID: " + id);
             Debug.WriteLine("OI " + otherId);
             Debug.WriteLine("like a fisher");
             return Redirect("./Chat");
-           
+
 
         }
 

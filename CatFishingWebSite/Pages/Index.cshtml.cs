@@ -10,6 +10,7 @@ using CatFishingWebSite.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace CatFishingWebSite.Pages
 {
@@ -35,17 +36,17 @@ namespace CatFishingWebSite.Pages
 
         public void OnGet()
         {
-           // webService.Logout();
+            CookieModel.count = 0;
             CookieModel.isLogin = false;
             CookieModel.userName = null;
-            Console.WriteLine("on get for login");
+            CookieModel.otherIdsMatched = null;
         }
         public async Task<IActionResult> OnPostLogin()
         {
-           
+
             Debug.WriteLine("onpost for login");
             Debug.WriteLine("user name: " + user.Username);
-            bool  isint = true;
+            bool isint = true;
             string un = user.Username;
             string pwd = user.Password;
             // check user input if int
@@ -56,20 +57,24 @@ namespace CatFishingWebSite.Pages
             }
             else
             {
-                isint = true ;
+                isint = true;
             }
             if (isint)
             {
                 errorMessage = "Please type the right format of username";
                 return Page();
             }
-            if (un == null || pwd == null  || un==""   )
+            if (un == null || pwd == null || un == "")
             {
                 errorMessage = "Username or password is reqired";
                 return Page();
             }
 
-            try { isLogin = webService.IsLogin(un, pwd); }
+            try
+            {
+                isLogin = webService.IsLogin(un, pwd);
+                CookieModel.otherIdsMatched = webService.GetFishersList(CookieModel.id);
+            }
             catch (SocketException)
             {
                 return RedirectToPage("Error");
@@ -79,8 +84,15 @@ namespace CatFishingWebSite.Pages
             {
                 CookieModel.userName = un;
                 CookieModel.isLogin = true;
-                
-                return Redirect("/Match/"+CookieModel.id );
+
+                int first = CookieModel.otherIdsMatched[0];
+                if (first == 0)
+                {
+                    Debug.WriteLine("can't find otherId");
+                    return Page();
+                }
+                CookieModel.count = 1;
+                return Redirect("/Match/" + CookieModel.id + "&" + first);
 
             }
             else
@@ -88,13 +100,8 @@ namespace CatFishingWebSite.Pages
             return Page();
 
         }
-        public void OnPostLogout()
-        {
-            Debug.WriteLine("+++ON POST LOG OUT ");
-        }
         public string getUserName()
         {
-
             return user.Username;
         }
 

@@ -60,7 +60,7 @@ namespace CatFishingWebSite.Pages.Signup
             {
                 return Page();
             }
-            if (fisher.SexPref != "M"&& fisher.SexPref != "F"&& fisher.SexPref != "B")
+            if (fisher.SexPref != "S"&& fisher.SexPref != "G"&& fisher.SexPref != "B")
             {
                 errorMessage = "Select your gender or sexual preference";
                 return Page();
