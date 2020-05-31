@@ -13,5 +13,6 @@ namespace CatFishingWebSite.Model
 
         public string Token { get; set; }
 
+        public int likeDislikeId { get; set; }
     }
 }

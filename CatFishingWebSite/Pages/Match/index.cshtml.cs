@@ -56,26 +56,41 @@ namespace CatFishingWebSite.Pages.Match
 
         public RedirectResult OnPostLike(int id, int otherId)
         {
-            Debug.WriteLine("ID: " + id);
-            Debug.WriteLine("OI " + otherId);
+
             Debug.WriteLine("like a fisher");
+            webService.LikeFisher(id, otherId);
             return Redirect("./Chat");
 
-
         }
 
-        public void OnPostSkip()
+        public RedirectResult OnPostSkip(int id, int otherId)
         {
+            if (CookieModel.count++ < CookieModel.otherIdsMatched.Count())
+            {
+                int next = CookieModel.otherIdsMatched[CookieModel.count++];
+                return Redirect("./" + id + "&" + next);
+            }
             Debug.WriteLine("Skip a fisher");
-        }
-        public void OnPostBack()
-        {
-            Debug.WriteLine("Back a fisher");
+            return Redirect("./" + id + "&" + otherId);
         }
 
-        public void OnPostRefuse(int id, int otherId)
+        public RedirectResult OnPostBack(int id, int otherId)
         {
+            if (CookieModel.count-- < 0)
+            {
+                int back = CookieModel.otherIdsMatched[CookieModel.count--];
+                Debug.WriteLine("Back a fisher");
+                return Redirect("./" + id + "&" + back);
+            }
+            return Redirect("./" + id + "&" + otherId);
+        }
+
+        public RedirectResult OnPostRefuse(int id, int otherId)
+        {
+            int next = CookieModel.otherIdsMatched[CookieModel.count++];
+            webService.RejectFisher(id, otherId);
             Debug.WriteLine("Skip a fisher");
+            return Redirect("./" + id + "&" + next);
         }
     }
 }

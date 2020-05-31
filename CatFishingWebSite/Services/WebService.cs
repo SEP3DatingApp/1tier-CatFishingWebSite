@@ -113,6 +113,8 @@ namespace CatFishingWebSite.Services
         //get list of ID which match with primeUser
  public List<int> GetFishersList(int id)
         {
+            string json = sock.GetMatchList(id);
+            Debug.WriteLine(json);
             return null;
         }
         // like fisher 

@@ -134,7 +134,7 @@ namespace CatFishingWebSite.Services
             {
 
                 Type = RequestTypes.MATCHLIST.ToString(),
-                Args = id
+                Args = new MatchIDs { id= id,token = CookieModel.token}
             };
             string recvStr = SendReceive(request);
           
@@ -145,9 +145,8 @@ namespace CatFishingWebSite.Services
         {
             Request request = new Request()
             {
-
                 Type = RequestTypes.LIKE.ToString(),
-                Args = new MatchModel { PrimeId =id,OtherId = otherId,Token = CookieModel.token}
+                Args = new MatchModel { PrimeId =id,OtherId = otherId,Token = CookieModel.token,likeDislikeId =1}
             };
             string recvStr = SendReceive(request);
 
@@ -159,7 +158,7 @@ namespace CatFishingWebSite.Services
             {
 
                 Type = RequestTypes.REJECT.ToString(),
-                Args = new MatchModel { PrimeId = id, OtherId = otherId, Token = CookieModel.token }
+                Args = new MatchModel { PrimeId = id, OtherId = otherId, Token = CookieModel.token, likeDislikeId = 2 }
             };
             string recvStr = SendReceive(request);
 

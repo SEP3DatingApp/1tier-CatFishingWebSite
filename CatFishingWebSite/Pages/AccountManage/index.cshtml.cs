@@ -41,16 +41,16 @@ namespace CatFishingWebSite.Pages.AccountManage
             {
                 Gend = "Female";
             }
-            if (fisher.SexPref.Contains("M"))
+            if (fisher.SexPref.Contains("G"))
             {
-                SexP = "Man";
+                SexP = "Gay";
             }else if (fisher.SexPref.Contains("B"))
             {
-                SexP = "Both Woman and Man";
+                SexP = "Bisexual";
             }
             else
             {
-                SexP = "Woman";
+                SexP = "Straight";
             }
         }
     }
