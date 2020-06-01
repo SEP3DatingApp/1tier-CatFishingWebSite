@@ -13,12 +13,13 @@ namespace CatFishingWebSite.Services
 
     public class WebService
     {
-        private static WebService instance = new WebService();
+        private static WebService instance;
         private readonly IMapper _mapper;
 
-        public WebService(IMapper mapper)
+        public WebService(IMapper mapper, WebService service)
         {
             _mapper = mapper;
+            instance = service;
         }
 
         public static WebService getInstance()
@@ -115,7 +116,7 @@ namespace CatFishingWebSite.Services
         public void Logout()
         {
             Debug.WriteLine("user ready to logout");
-          sock.Logout();
+        //  sock.Logout();
         }
         //method for Match
 

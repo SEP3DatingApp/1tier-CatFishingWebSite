@@ -16,11 +16,18 @@ namespace CatFishingWebSite.Pages.Match
     public class indexModel : PageModel
     {
         public string errorMessage;
-        private WebService webService = WebService.getInstance();
+        private WebService webService;
         [BindProperty]
         public Fisher fisher { get; set; }
 
         public string Title { get; set; }
+
+        public indexModel( WebService service)
+        {
+            
+            webService = service;
+
+        }
         public void OnGet(int id, int otherId)
         {
   

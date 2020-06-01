@@ -14,8 +14,14 @@ namespace CatFishingWebSite.Pages.Signup
 {
     public class indexModel : PageModel
     {
-        private static readonly WebService webService = WebService.getInstance();
+        private  readonly WebService webService;
 
+        public indexModel(WebService service)
+        {
+
+            webService = service;
+
+        }
 
         [BindProperty]
         public Fisher fisher { get; set; }

@@ -11,7 +11,13 @@ namespace CatFishingWebSite.Pages
 {
     public class LogoutModel : PageModel
     {
-        WebService webService = WebService.getInstance();
+        WebService webService;
+        public LogoutModel(WebService service)
+        {
+
+            webService = service;
+
+        }
         public void OnGet()
         {
             CookieModel.isLogin = false;

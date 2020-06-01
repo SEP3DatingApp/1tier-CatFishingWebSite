@@ -14,7 +14,13 @@ namespace CatFishingWebSite.Pages.AccountManage
 {
     public class EditModel : PageModel
     {
-        private static readonly WebService webService = WebService.getInstance();
+        private readonly WebService webService;
+        public EditModel(WebService service)
+        {
+
+            webService = service;
+
+        }
         [BindProperty]
         public Fisher fisher { get; set; }
         public int Id { get; set; }

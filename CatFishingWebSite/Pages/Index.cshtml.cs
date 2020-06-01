@@ -17,7 +17,7 @@ namespace CatFishingWebSite.Pages
     public class IndexModel : PageModel
 
     {
-        private static readonly WebService webService = WebService.getInstance();
+        private readonly WebService webService;
         // private static readonly DummyServer dummy = new DummyServer();
 
 
@@ -29,9 +29,11 @@ namespace CatFishingWebSite.Pages
 
         private bool isLogin;
         public string errorMessage;
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ILogger<IndexModel> logger, WebService service)
         {
             _logger = logger;
+            webService = service;
+
         }
 
         public void OnGet()
