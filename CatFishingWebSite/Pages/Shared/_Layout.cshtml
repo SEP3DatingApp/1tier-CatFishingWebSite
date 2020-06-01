@@ -22,7 +22,7 @@
 
                 @if (CatFishingWebSite.Model.CookieModel.isLogin)
                 {
-                   <a class="nav-link text-dark"    asp-page="../Logout">Log out</a>
+                    <a class="nav-link text-dark" asp-page="../Logout">Log out</a>
                 }
                 else
                 {<a class="navbar-brand" asp-area="" asp-page="/Index">CatFishing</a>}
@@ -30,7 +30,7 @@
 
                 @if (CatFishingWebSite.Model.CookieModel.isLogin)
                 {
-                    <a class="navbar-brand" asp-area="" asp-page="../Match/"  asp-route-id="@CatFishingWebSite.Model.CookieModel.id , @CatFishingWebSite.Model.CookieModel.otherIdsMatched[0].Id">Fishing</a>
+                    <a class="navbar-brand" asp-page="/Match/index" asp-route-id="@CatFishingWebSite.Model.CookieModel.id" asp-route-otherId="@CatFishingWebSite.Model.CookieModel.otherIdsMatched[0].Id">Fishing</a>
                     <a class="nav-link text-dark" asp-area="" asp-page="/AccountManage/index" asp-route-id="@CatFishingWebSite.Model.CookieModel.id">Welcome: @CatFishingWebSite.Model.CookieModel.userName</a>
                 }
                 else

@@ -22,6 +22,10 @@ namespace CatFishingWebSite.Pages.Match
 
         public string Title { get; set; }
 
+        public string sexp { get; set; }
+
+        public string gend { get; set; }
+
         public indexModel( WebService service)
         {
             
@@ -38,6 +42,32 @@ namespace CatFishingWebSite.Pages.Match
                 catch (SocketException)
                 {
                     Debug.WriteLine("Error socket");
+                }
+                if(fisher.PersonSexualityId == 2)
+                {
+                    sexp = " Gay ";
+                }else if(fisher.PersonSexualityId == 3)
+                {
+                    sexp = " Bisexual ";
+                }else if(fisher.PersonSexualityId == 1)
+                {
+                    sexp = " Straight ";
+                }
+                else
+                {
+                    sexp = "Error";
+                }
+
+                if (fisher.Gender.Contains("M"))
+                {
+                    gend = " Male ";
+                }else if (fisher.Gender.Contains("F"))
+                {
+                    gend = "Female";
+                }
+                else
+                {
+                    gend = " Error ";
                 }
             }
             else
@@ -59,11 +89,11 @@ namespace CatFishingWebSite.Pages.Match
             if (CookieModel.count +1< CookieModel.otherIdsMatched.Count)
             {
                 int next = CookieModel.otherIdsMatched[CookieModel.count++].Id;
-                return Redirect("./" + id + "&" + next);
+                return Redirect("./" + id + "/" + next);
             }
             Debug.WriteLine("Skip a fisher");
             errorMessage = "It's the last one!";
-            return Redirect("./" + id + "&" + otherId);
+            return Redirect("./" + id + "/" + otherId);
         }
 
 
@@ -74,10 +104,10 @@ namespace CatFishingWebSite.Pages.Match
             {
                 int next = CookieModel.otherIdsMatched[CookieModel.count++].Id;
                 webService.RejectFisher(otherId);
-                return Redirect("./" + id + "&" + next);
+                return Redirect("./" + id + "/" + next);
             }
             errorMessage = "It's the last one!";
-            return Redirect("./" + id + "&" + otherId);
+            return Redirect("./" + id + "/" + otherId);
         }
     }
 }

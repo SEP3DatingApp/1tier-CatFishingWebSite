@@ -1,4 +1,4 @@
-﻿@page "{id}&{otherId}"
+﻿@page "{id}/{otherId}"
 @RouteData.Values["title"]
 @model CatFishingWebSite.Pages.Match.indexModel
 @{
@@ -8,34 +8,41 @@
 
 <h1>@Model.errorMessage</h1>
 <div class="container">
+    <div class="row"><br /></div>
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-3">
-            @if (CatFishingWebSite.Model.CookieModel.count % 2 == 0)
+            @if (CatFishingWebSite.Model.CookieModel.count % 3 == 2)
             {
-                <h5>Say hello to >>> </h5>
+                <h5>你好！ >>> </h5>
             }
-            else {<h5>привет! >>></h5> }
-            
+            else if (CatFishingWebSite.Model.CookieModel.count % 3 == 1)
+            {<h5>Sveiki ! >>></h5> }
+            else
+            {
+                <h5>Say Hello to ! >>> </h5>
+            }
+
         </div>
         <div class="col-md-3">
             <h2> @Html.DisplayFor(model => model.fisher.Username)</h2>
         </div>
         <div class="col-md-3"></div>
     </div>
-
+    <div class="row"><br /></div>
+    <div class="row"><br /></div>
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            @if (Model.fisher.Gender.Contains("M") && CatFishingWebSite.Model.CookieModel.count % 2 == 0 )
+            @if (Model.fisher.Gender.Contains("M") && CatFishingWebSite.Model.CookieModel.count % 2 == 0)
             {
                 <img width="270" src="~/images/boy1.png" /> }
-            else if (Model.fisher.Gender.Contains("M") && CatFishingWebSite.Model.CookieModel.count % 2 != 0 )
+            else if (Model.fisher.Gender.Contains("M") && CatFishingWebSite.Model.CookieModel.count % 2 != 0)
             {
                 <img width="270" src="~/images/boy2.png" />
 
             }
-            else if (Model.fisher.Gender.Contains("F") && CatFishingWebSite.Model.CookieModel.count % 2 != 0 )
+            else if (Model.fisher.Gender.Contains("F") && CatFishingWebSite.Model.CookieModel.count % 2 != 0)
             {
                 <img width="270" src="~/images/girl1.png" />
             }
@@ -46,11 +53,12 @@
         </div>
         <div class="col-md-4"></div>
     </div>
-
+    <div class="row"><br /></div>
+    <div class="row"><br /></div>
     <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-6"> @Html.DisplayFor(model => model.fisher.Description)</div>
-        <div class="col-md-3"></div>
+        <div class="col-md-5 "> <h6 class="text-center">@Html.DisplayFor(model => model.fisher.Description)</h6> </div>
+        <div class="col-md-4"></div>
     </div>
 
     <div class="row">
@@ -62,11 +70,12 @@
 
     <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-3">Gender : @Html.DisplayFor(model => model.fisher.Gender) </div>
-        <div class="col-md-3">Sex ort : everyone</div>
+        <div class="col-md-3">Gender : @Model.gend </div>
+        <div class="col-md-3">Sexual orientation : @Model.sexp</div>
         <div class="col-md-3"></div>
     </div>
-
+    <div class="row"><br /></div>
+    <div class="row"><br /></div>
     <div class="row">
         <div class="col-md-3"></div>
 
