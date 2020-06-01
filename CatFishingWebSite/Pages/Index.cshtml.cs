@@ -75,11 +75,11 @@ namespace CatFishingWebSite.Pages
                 isLogin = webService.IsLogin(un, pwd);
                 CookieModel.otherIdsMatched = webService.GetFishersList(CookieModel.id);
             }
-            catch (SocketException)
+            catch (Exception)
             {
                 return RedirectToPage("Error");
             }
-            //isLogin = true;
+      
             if (isLogin)
             {
                 CookieModel.userName = un;

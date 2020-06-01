@@ -23,8 +23,7 @@ namespace CatFishingWebSite.Pages.Match
         public string Title { get; set; }
         public void OnGet(int id, int otherId)
         {
-            Debug.WriteLine("ID: " + id);
-            Debug.WriteLine("OI " + otherId);
+  
             if (CookieModel.isLogin)
             {
                 try { fisher = webService.GetFisherByName(CookieModel.otherIdsMatched[CookieModel.count]); }
@@ -32,20 +31,13 @@ namespace CatFishingWebSite.Pages.Match
                 {
                     Debug.WriteLine("Error socket");
                 }
-
             }
             else
             {
                 errorMessage = "Please login to find your match";
             }
-
         }
 
-        public async Task<IActionResult> OnPostAsync()
-        {
-            Debug.WriteLine("shit a fisher");
-            return Redirect("../index");
-        }
 
         public RedirectResult OnPostLike(int id, int otherId)
         {
@@ -65,22 +57,12 @@ namespace CatFishingWebSite.Pages.Match
             return Redirect("./" + id + "&" + otherId);
         }
 
-        //public RedirectResult OnPostBack(int id, int otherId)
-        //{
-        //    if (CookieModel.count-- < 0)
-        //    {
-        //        int back = CookieModel.otherIdsMatched[CookieModel.count--];
-        //        Debug.WriteLine("Back a fisher");
-        //        return Redirect("./" + id + "&" + back);
-        //    }
-        //    return Redirect("./" + id + "&" + otherId);
-        //}
 
         public RedirectResult OnPostRefuse(int id, int otherId)
         {
+            Debug.WriteLine("Reject a fisher");
             int next = CookieModel.otherIdsMatched[CookieModel.count++];
             webService.RejectFisher(id, otherId);
-            Debug.WriteLine("Skip a fisher");
             return Redirect("./" + id + "&" + next);
         }
     }
