@@ -5,6 +5,8 @@ using System.Diagnostics;
 using CatFishingWebSite.Services;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using Nancy.Json;
+using AutoMapper;
 
 namespace CatFishingWebSite.Services
 {
@@ -12,6 +14,12 @@ namespace CatFishingWebSite.Services
     public class WebService
     {
         private static WebService instance = new WebService();
+        private readonly IMapper _mapper;
+
+        public WebService(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
 
         public static WebService getInstance()
         {
@@ -25,7 +33,7 @@ namespace CatFishingWebSite.Services
             //192.168.1.142
             //localhost
             //
-            sock = new Sockets("192.168.1.142", 5000);
+            sock = new Sockets("192.168.1.144", 5000);
         }
         public List<User> getAllUsers()
         {
@@ -53,7 +61,7 @@ namespace CatFishingWebSite.Services
 
         }
 
-        public bool CreateUser(string username, string firstname,int age, string password, string gender, string sexpf)
+        public bool CreateUser(string username, string firstname,int age, string password, string gender, int sexpf)
         {
             string reply = sock.Create(username, firstname,age, password, gender, sexpf);
             if (reply.Contains("200"))
@@ -83,7 +91,7 @@ namespace CatFishingWebSite.Services
             fisher.IsActive = (bool)jFisher["isActive"];
             fisher.Email =(string) jFisher["email"];
             fisher.Gender = (string)jFisher["gender"];
-            fisher.SexPref = (string)jFisher["sexPref"];
+            fisher.PersonSexualityId = (int)jFisher["personSexualityId"];
             fisher.FirstName = (string)jFisher["firstName"];
             fisher.Age = (int)jFisher["age"];
             fisher.Description = (string)jFisher["description"];
@@ -92,7 +100,7 @@ namespace CatFishingWebSite.Services
             return fisher;
         }
 
-        public bool UpdateFisher(int id, string sexpf, string password, string email, string description, bool isActive)
+        public bool UpdateFisher(int id, int sexpf, string password, string email, string description, bool isActive)
         {
             string req = sock.EditFisher(id, sexpf, password, email, description, isActive);
 
@@ -112,26 +120,31 @@ namespace CatFishingWebSite.Services
         //method for Match
 
         //get list of ID which match with primeUser
- public List<int> GetFishersList(int id)
+ public List<IdOfUser> GetFishersList(int id)
         {
-            string json = sock.GetMatchList(id);
-            List<int> model = JsonConvert.DeserializeObject<List<int>>(json);
-            Debug.WriteLine(json);
-            return model;
+
+            string json = sock.GetMatchList(id);   
+            Debug.WriteLine("WebService getList :     "+json);
+
+            JavaScriptSerializer ser = new JavaScriptSerializer();
+            List<IdOfUser> records =new List<IdOfUser>(  ser.Deserialize<List<IdOfUser>>(json));
+            Debug.WriteLine("List: "+records[0]);
+            return records;
         }
         // like fisher 
-        public void LikeFisher(int primeId ,int otherId)
+        public void LikeFisher(int otherId)
         {
             Debug.WriteLine("Like");
-           string re =  sock.Like(primeId, otherId);
+           string re =  sock.Like(otherId);
             Debug.WriteLine(re);
             
         }
         //reject fisher
-        public void RejectFisher(int primeId,int otherid)
+        public void RejectFisher(int otherid)
         {
             Debug.WriteLine("Reject");
-            string re = sock.Reject(primeId, otherid);
+
+            string re = sock.Reject(otherid);
             Debug.WriteLine(re);
         }
 

@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace CatFishingWebSite.Model
 {
-    public class MatchModel
+    public class IdOfUser
     {
-
-        public int OtherId { get; set; }
-
+        public int Id { get; set; }
     }
 }

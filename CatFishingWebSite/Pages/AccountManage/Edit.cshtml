@@ -35,13 +35,13 @@
 
     </div>
     <div class="form-group">
-        <label asp-for="fisher.SexPref" class="control-label">Sexual orientation： </label>
+        <label asp-for="fisher.PersonSexualityId" class="control-label">Sexual orientation： </label>
         <br />
-        <label><input asp-for="fisher.SexPref" type="radio" value='F'> women</label>
-        <label><input asp-for="fisher.SexPref" type="radio" value='M'> men </label>
-        <label><input asp-for="fisher.SexPref" type="radio" value='B'> both sexes </label>
+        <label><input asp-for="fisher.PersonSexualityId" type="radio" value='F'> women</label>
+        <label><input asp-for="fisher.PersonSexualityId" type="radio" value='M'> men </label>
+        <label><input asp-for="fisher.PersonSexualityId" type="radio" value='B'> both sexes </label>
 
-        <span asp-validation-for="fisher.SexPref" class="text-danger"></span>
+        <span asp-validation-for="fisher.PersonSexualityId" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="fisher.Email" class="control-label"></label>

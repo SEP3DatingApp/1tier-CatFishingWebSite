@@ -35,7 +35,7 @@ namespace CatFishingWebSite.Pages.AccountManage
             {
                 fisher.Password = null;
             }
-            try {  isUpdate = webService.UpdateFisher(CookieModel.id, fisher.SexPref, fisher.Password, fisher.Email, fisher.Description, fisher.IsActive); }
+            try {  isUpdate = webService.UpdateFisher(CookieModel.id, fisher.PersonSexualityId, fisher.Password, fisher.Email, fisher.Description, fisher.IsActive); }
             catch (SocketException)
             {
                 return Redirect("../error");

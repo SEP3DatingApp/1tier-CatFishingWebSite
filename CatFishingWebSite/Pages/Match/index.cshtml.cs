@@ -26,7 +26,8 @@ namespace CatFishingWebSite.Pages.Match
   
             if (CookieModel.isLogin)
             {
-                try { fisher = webService.GetFisherByName(CookieModel.otherIdsMatched[CookieModel.count]); }
+                Debug.WriteLine(CookieModel.count);
+                try { fisher = webService.GetFisherByName(CookieModel.otherIdsMatched[CookieModel.count].Id); }
                 catch (SocketException)
                 {
                     Debug.WriteLine("Error socket");
@@ -42,18 +43,19 @@ namespace CatFishingWebSite.Pages.Match
         public RedirectResult OnPostLike(int id, int otherId)
         {
             Debug.WriteLine("like a fisher");
-            webService.LikeFisher(id, otherId);
+            webService.LikeFisher(otherId);
             return Redirect("./Chat");
         }
 
         public RedirectResult OnPostSkip(int id, int otherId)
         {
-            if (CookieModel.count++ < CookieModel.otherIdsMatched.Count())
+            if (CookieModel.count +1< CookieModel.otherIdsMatched.Count)
             {
-                int next = CookieModel.otherIdsMatched[CookieModel.count++];
+                int next = CookieModel.otherIdsMatched[CookieModel.count++].Id;
                 return Redirect("./" + id + "&" + next);
             }
             Debug.WriteLine("Skip a fisher");
+            errorMessage = "It's the last one!";
             return Redirect("./" + id + "&" + otherId);
         }
 
@@ -61,9 +63,14 @@ namespace CatFishingWebSite.Pages.Match
         public RedirectResult OnPostRefuse(int id, int otherId)
         {
             Debug.WriteLine("Reject a fisher");
-            int next = CookieModel.otherIdsMatched[CookieModel.count++];
-            webService.RejectFisher(id, otherId);
-            return Redirect("./" + id + "&" + next);
+            if (CookieModel.count + 1 < CookieModel.otherIdsMatched.Count)
+            {
+                int next = CookieModel.otherIdsMatched[CookieModel.count++].Id;
+                webService.RejectFisher(otherId);
+                return Redirect("./" + id + "&" + next);
+            }
+            errorMessage = "It's the last one!";
+            return Redirect("./" + id + "&" + otherId);
         }
     }
 }

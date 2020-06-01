@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using CatFishingWebSite.Services;
+using CatFishingWebSite.wwwroot;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +27,10 @@ namespace CatFishingWebSite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new AutoMapperProfile());
+            });
             //TODO: (HZ)comment below is for testing web page
            //services.AddSingleton<IWebService, WebService>();
            

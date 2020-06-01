@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +19,8 @@ namespace CatFishingWebSite.Model
         // store token after login
         public static string token { get; set; }
 
-        public static List<int> otherIdsMatched { get; set; }
+         
+        public static List<IdOfUser> otherIdsMatched { get; set; }
 
         public static bool logout{ get; set; }
 

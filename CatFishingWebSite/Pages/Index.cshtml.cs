@@ -73,7 +73,7 @@ namespace CatFishingWebSite.Pages
             try
             {
                 isLogin = webService.IsLogin(un, pwd);
-                CookieModel.otherIdsMatched = webService.GetFishersList(CookieModel.id);
+              
             }
             catch (Exception)
             {
@@ -84,15 +84,15 @@ namespace CatFishingWebSite.Pages
             {
                 CookieModel.userName = un;
                 CookieModel.isLogin = true;
-
-                int first = CookieModel.otherIdsMatched[0];
-                if (first == 0)
+               CookieModel.otherIdsMatched = webService.GetFishersList(CookieModel.id);
+                IdOfUser first = CookieModel.otherIdsMatched[0];
+                if (first.Id == 0)
                 {
                     Debug.WriteLine("can't find otherId");
                     return Page();
                 }
-                CookieModel.count = 1;
-                return Redirect("/Match/" + CookieModel.id + "&" + first);
+               
+                return Redirect("/Match/" + CookieModel.id + "&" + first.Id);
 
             }
             else

@@ -32,7 +32,7 @@ namespace CatFishingWebSite.Model
         [Required]
         public string Gender { get; set; }
         [Required]
-        public string SexPref { get; set; }
+        public int PersonSexualityId { get; set; }
         public string PicRef { get; set; }
         [Range(18, 100)]
         public int Age { get; set; }

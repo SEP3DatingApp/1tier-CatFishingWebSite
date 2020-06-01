@@ -35,24 +35,24 @@ namespace CatFishingWebSite.Services
             }
         }
 
-        public string Create(string username, string firstname, int age, string password, string gender, string sexpf)
+        public string Create(string username, string firstname, int age, string password, string gender, int sexpf)
         {
             Request request = new Request()
             {
                 Type = RequestTypes.CREATEUSER.ToString(),
-                Args = new Fisher { Username = username, FirstName = firstname, Password = password, Age = age, Gender = gender, SexPref = sexpf, IsActive = true }
+                Args = new Fisher { Username = username, FirstName = firstname, Password = password, Age = age, Gender = gender, PersonSexualityId = sexpf, IsActive = true }
             };
             string recvStr = SendReceive(request);
             Debug.WriteLine("DATA RECEIVED====" + recvStr);
             return recvStr;
         }
 
-        public string EditFisher(int id, string sexpf, string password, string email, string description, bool isActive)
+        public string EditFisher(int id, int sexpf, string password, string email, string description, bool isActive)
         {
             Request request = new Request()
             {
                 Type = RequestTypes.EDITFISHER.ToString(),
-                Args = new Fisher { id = id, SexPref = sexpf, IsActive = isActive, Password = password, Email = email, Description = description, token = CookieModel.token }
+                Args = new Fisher { id = id, PersonSexualityId = sexpf, IsActive = isActive, Password = password, Email = email, Description = description, token = CookieModel.token }
             };
             string recvStr = SendReceive(request);
             Debug.WriteLine("DATA RECEIVED====" + recvStr);
@@ -141,24 +141,24 @@ namespace CatFishingWebSite.Services
             return recvStr;
         }
 
-        public string Like(int id, int otherId)
+        public string Like( int otherId)
         {
             Request request = new Request()
             {
                 Type = RequestTypes.LIKE.ToString(),
-                Args = new MatchModel { PrimeId =id,OtherId = otherId,Token = CookieModel.token,likeDislikeId =1}
+                Args = new MatchModel {OtherId = otherId}
             };
             string recvStr = SendReceive(request);
 
             return recvStr;
         }
-        public string Reject(int id, int otherId)
+        public string Reject( int otherId)
         {
             Request request = new Request()
             {
 
                 Type = RequestTypes.REJECT.ToString(),
-                Args = new MatchModel { PrimeId = id, OtherId = otherId, Token = CookieModel.token, likeDislikeId = 2 }
+                Args = new MatchModel {  OtherId = otherId }
             };
             string recvStr = SendReceive(request);
 
