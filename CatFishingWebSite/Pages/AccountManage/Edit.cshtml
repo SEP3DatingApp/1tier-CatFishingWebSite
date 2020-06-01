@@ -12,23 +12,14 @@
         @Html.DisplayFor(model => model.fisher.Username)
     </dt>
     <dt class="col-sm-6">
-     Name :   @Html.DisplayFor(model => model.fisher.FirstName)
-    
+        Name :   @Html.DisplayFor(model => model.fisher.FirstName)
     </dt>
 
     <dd class="col-sm-3">
-
         Gender: @Html.DisplayFor(model => model.fisher.Gender)
     </dd>
 </dl>
 <form method="post">
-    <fieldset>
-        <legend> Upload Image </legend>
-        <label for="Image">Image</label>
-        <input type="file" name="Image" />
-
-        <!-- <input type="submit" value="Upload" />-->
-    </fieldset>
     <div class="form-group">
         <label asp-for="fisher.Password" class="control-label">Chnage your password</label>
         <input type="password" asp-for="fisher.Password" class="form-control" />
@@ -46,8 +37,8 @@
     <div class="form-group">
         <label asp-for="fisher.Email" class="control-label"></label>
         <input asp-for="fisher.Email" class="form-control" />
-</div>
-    
+    </div>
+
 
     <div class="form-group">
         <label asp-for="fisher.Description" class="control-label"></label>

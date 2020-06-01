@@ -16,20 +16,17 @@ namespace CatFishingWebSite.Pages.AccountManage
 
         public indexModel(WebService service)
         {
-
             webService = service;
-
         }
 
         public Fisher fisher { get; set; }
-        string Username { get; set; }
-       public string isAct { get; set; }
+        public string isAct { get; set; }
         public string Gend { get; set; }
         public string SexP { get; set; }
         public void OnGet(int id)
         {
             fisher = webService.GetFisherByName(id);
-            //Username = CookieModel.userName;
+
             if (fisher.IsActive)
             {
                 isAct = "Active";
@@ -50,7 +47,8 @@ namespace CatFishingWebSite.Pages.AccountManage
             if (fisher.PersonSexualityId == 2)
             {
                 SexP = "Gay";
-            }else if (fisher.PersonSexualityId == 3)
+            }
+            else if (fisher.PersonSexualityId == 3)
             {
                 SexP = "Bisexual";
             }

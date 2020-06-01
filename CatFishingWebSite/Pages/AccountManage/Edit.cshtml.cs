@@ -17,9 +17,7 @@ namespace CatFishingWebSite.Pages.AccountManage
         private readonly WebService webService;
         public EditModel(WebService service)
         {
-
             webService = service;
-
         }
         [BindProperty]
         public Fisher fisher { get; set; }
@@ -37,11 +35,11 @@ namespace CatFishingWebSite.Pages.AccountManage
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if(string.IsNullOrEmpty(fisher.Password))
+            if (string.IsNullOrEmpty(fisher.Password))
             {
                 fisher.Password = null;
             }
-            try {  isUpdate = webService.UpdateFisher(CookieModel.id, fisher.PersonSexualityId, fisher.Password, fisher.Email, fisher.Description, fisher.IsActive); }
+            try { isUpdate = webService.UpdateFisher(CookieModel.id, fisher.PersonSexualityId, fisher.Password, fisher.Email, fisher.Description, fisher.IsActive); }
             catch (SocketException)
             {
                 return Redirect("../error");

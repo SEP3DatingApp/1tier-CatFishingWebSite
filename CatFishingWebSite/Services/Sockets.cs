@@ -31,7 +31,6 @@ namespace CatFishingWebSite.Services
             catch (Exception)
             {
                 Debug.WriteLine("WRONG");
-                //client.Close();
             }
         }
 
@@ -43,7 +42,6 @@ namespace CatFishingWebSite.Services
                 Args = new Fisher { Username = username, FirstName = firstname, Password = password, Age = age, Gender = gender, PersonSexualityId = sexpf, IsActive = true }
             };
             string recvStr = SendReceive(request);
-            Debug.WriteLine("DATA RECEIVED====" + recvStr);
             return recvStr;
         }
 
@@ -55,7 +53,6 @@ namespace CatFishingWebSite.Services
                 Args = new Fisher { id = id, PersonSexualityId = sexpf, IsActive = isActive, Password = password, Email = email, Description = description, token = CookieModel.token }
             };
             string recvStr = SendReceive(request);
-            Debug.WriteLine("DATA RECEIVED====" + recvStr);
             return recvStr;
         }
 
@@ -68,7 +65,6 @@ namespace CatFishingWebSite.Services
                 Args = new Fisher { id = id, token = CookieModel.token }
             };
             string recvStr = SendReceive(request);
-            Debug.WriteLine("DATA RECEIVED====" + recvStr);
 
             return recvStr;
         }
@@ -76,7 +72,6 @@ namespace CatFishingWebSite.Services
 
         public User LoginUser(string username, string password)
         {
-
             Request request = new Request()
             {
                 Type = RequestTypes.LOGIN.ToString(),
@@ -86,7 +81,6 @@ namespace CatFishingWebSite.Services
 
             if (recvStr.Contains("Username or password is incorrect"))
             {
-
                 return null;
             }
 
@@ -101,13 +95,11 @@ namespace CatFishingWebSite.Services
             // decode token
             string jwtEncodedString = token;
             var t = new JwtSecurityToken(jwtEncodedString: jwtEncodedString);
-
-            Debug.WriteLine("Id => " + t.Claims.First(c => c.Type == "unique_name").Value);
             string value = t.Claims.First(c => c.Type == "unique_name").Value;
             CookieModel.token = token;
             CookieModel.id = Convert.ToInt32(value);
             user.id = Convert.ToInt32(value);
-            Debug.WriteLine("hello : " + user.Username);
+
 
 
             if (user.Username != "")
@@ -134,31 +126,31 @@ namespace CatFishingWebSite.Services
             {
 
                 Type = RequestTypes.MATCHLIST.ToString(),
-                Args = new MatchIDs { id= id,token = CookieModel.token}
+                Args = new MatchIDs { id = id, token = CookieModel.token }
             };
             string recvStr = SendReceive(request);
-          
+
             return recvStr;
         }
 
-        public string Like( int otherId)
+        public string Like(int otherId)
         {
             Request request = new Request()
             {
                 Type = RequestTypes.LIKE.ToString(),
-                Args = new MatchModel {OtherId = otherId}
+                Args = new MatchModel { OtherId = otherId }
             };
             string recvStr = SendReceive(request);
 
             return recvStr;
         }
-        public string Reject( int otherId)
+        public string Reject(int otherId)
         {
             Request request = new Request()
             {
 
                 Type = RequestTypes.REJECT.ToString(),
-                Args = new MatchModel {  OtherId = otherId }
+                Args = new MatchModel { OtherId = otherId }
             };
             string recvStr = SendReceive(request);
 
@@ -175,9 +167,6 @@ namespace CatFishingWebSite.Services
             Debug.WriteLine(BitConverter.ToString(byData));
             //send
             client.Send(byData);
-
-            Debug.WriteLine("data have been sent");
-
             json = Encoding.ASCII.GetString(byData);
             //receive
             string recvStr = "";

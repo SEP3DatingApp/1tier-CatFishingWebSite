@@ -17,6 +17,7 @@ namespace CatFishingWebSite.Services
         string EditFisher(int id, int sexpf, string password, string email, string description, bool isActive);
 
         void Logout();
+
         //Match
 
         string GetMatchList(int id);

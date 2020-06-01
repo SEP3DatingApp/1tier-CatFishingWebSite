@@ -20,21 +20,21 @@ namespace CatFishingWebSite.Model
 
         public string Usertype { get; set; }
 
-        public  string token { get; set; }
+        public string token { get; set; }
     }
 
     public class Fisher : User
     {
-       
+
         public string FirstName { get; set; }
-      
+
         public string Email { get; set; }
         [Required]
         public string Gender { get; set; }
         [Required]
         public int PersonSexualityId { get; set; }
         public string PicRef { get; set; }
-        [Range(18, 100)]
+        [Range(18, 120)]
         public int Age { get; set; }
         public string Description { get; set; }
         [DefaultValue(true)]

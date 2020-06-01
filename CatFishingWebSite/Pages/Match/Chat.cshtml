@@ -82,28 +82,29 @@
                 padding: 5px 10px;
             }
     </style>
-    <script type="text/javascript">//
-        window.onload = function(){
+    <script type="text/javascript">
+    //
+        window.onload = function () {
             var Words = document.getElementById("words");
             var Who = document.getElementById("who");
             var TalkWords = document.getElementById("talkwords");
             var TalkSub = document.getElementById("talksub");
 
 
-            TalkSub.onclick = function(){
-	            
+            TalkSub.onclick = function () {
+
                 var str = "";
-                if(TalkWords.value == ""){
-	                
+                if (TalkWords.value == "") {
+
                     alert("not empty");
                     return;
                 }
-                if(Who.value == 0){
-	             
-                    str = '<div class="atalk"><span>A  :' + TalkWords.value +'</span></div>';
+                if (Who.value == 0) {
+
+                    str = '<div class="atalk"><span>A  :' + TalkWords.value + '</span></div>';
                 }
-                else{
-                    str = '<div class="btalk"><span>You :' + TalkWords.value +'</span></div>' ;
+                else {
+                    str = '<div class="btalk"><span>You :' + TalkWords.value + '</span></div>';
                 }
                 Words.innerHTML = Words.innerHTML + str;
             }
@@ -111,7 +112,7 @@
         }</script>
 </head>
 <body>
-    
+
     <div class="talk_con">
         <div class="talk_show" id="words">
             <div class="atalk"><span id="asay">A ：Hello</span></div>
@@ -119,7 +120,7 @@
         </div>
         <div class="talk_input">
             <select class="whotalk" id="who">
-               
+
                 <option value="1">You：</option>
             </select>
             <input type="text" class="talk_word" id="talkwords">
@@ -129,5 +130,5 @@
     <h5> *Demo of chat</h5>
 </body>
 
- 
+
 

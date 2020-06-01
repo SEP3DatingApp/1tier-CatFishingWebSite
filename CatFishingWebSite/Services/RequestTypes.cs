@@ -7,7 +7,6 @@ namespace CatFishingWebSite.Services
 {
     public enum RequestTypes
     {
-        GETALLUSERS,
         GETUSER,
         LOGIN,
         LOGOUT,

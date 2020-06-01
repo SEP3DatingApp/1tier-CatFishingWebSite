@@ -2,8 +2,6 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-
-
 }
 
 <!--Welcome page and log in-->
@@ -54,14 +52,12 @@
                     <h4>Log in</h4>
 
                     <div class="form-group">
-                        @* <label asp-for="user.Username" class="control-label"></label> *@
                         <input type="text" asp-for="user.Username" class="form-control" placeholder="Username" />
                         <span data-placeholder="Username" class="span-label"></span>
                         <span asp-validation-for="user.Username" class="text-danger"></span>
                     </div>
 
-                    <div class="form-group">
-                        @*<label asp-for="user.Password" class="control-label"></label>*@
+                    <div class="form-group">                
                         <input type="password" asp-for="user.Password" class="form-control" placeholder="Password" />
                         <span data-placeholder="Password" class="span-label"></span>
                         <span asp-validation-for="user.Password" class="text-danger">  @Model.errorMessage</span>
@@ -73,9 +69,7 @@
 
                     <div class="form-group">
                         <input type="submit" value="Start Fishing!" class="btn btn-primary" />
-
                     </div>
-
                 </form>   
             </div>
         </div>

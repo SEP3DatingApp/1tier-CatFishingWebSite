@@ -14,13 +14,11 @@ namespace CatFishingWebSite.Pages.Signup
 {
     public class indexModel : PageModel
     {
-        private  readonly WebService webService;
+        private readonly WebService webService;
 
         public indexModel(WebService service)
         {
-
             webService = service;
-
         }
 
         [BindProperty]
@@ -44,7 +42,7 @@ namespace CatFishingWebSite.Pages.Signup
             //    errorMessage = "Username already exists";
             //    return Page();
             //}
-          
+
             if (fisher.Password != passwordAgain)
             {
                 errorMessage = "Passwords doesn't match, please type the right passwords again";
@@ -62,19 +60,19 @@ namespace CatFishingWebSite.Pages.Signup
             {
                 return Page();
             }
-            if (fisher.PersonSexualityId != 1 && fisher.PersonSexualityId != 2&& fisher.PersonSexualityId != 3)
+            if (fisher.PersonSexualityId != 1 && fisher.PersonSexualityId != 2 && fisher.PersonSexualityId != 3)
             {
                 errorMessage = "Select your gender or sexual preference";
                 return Page();
             }
-            if (fisher.Gender !="M" && fisher.Gender != "F")
+            if (fisher.Gender != "M" && fisher.Gender != "F")
             {
                 errorMessage = "Select your gender or sexual preference";
                 return Page();
             }
             successMessage = "Sign up now...";
             bool created;
-            try { created = webService.CreateUser(fisher.Username,fisher.FirstName,fisher.Age, fisher.Password, fisher.Gender, fisher.PersonSexualityId); }
+            try { created = webService.CreateUser(fisher.Username, fisher.FirstName, fisher.Age, fisher.Password, fisher.Gender, fisher.PersonSexualityId); }
             catch (SocketException)
             {
                 return RedirectToPage("Error");
@@ -84,7 +82,7 @@ namespace CatFishingWebSite.Pages.Signup
             {
                 Console.WriteLine("Create a new account");
                 successMessage = "Sign up successfully, back to login page";
-                
+
                 return RedirectToPage("./Success");
             }
             errorMessage = "Username already exists or other error";

@@ -26,15 +26,15 @@ namespace CatFishingWebSite.Pages.Match
 
         public string gend { get; set; }
 
-        public indexModel( WebService service)
+        public indexModel(WebService service)
         {
-            
+
             webService = service;
 
         }
         public void OnGet(int id, int otherId)
         {
-  
+
             if (CookieModel.isLogin)
             {
                 Debug.WriteLine(CookieModel.count);
@@ -43,13 +43,15 @@ namespace CatFishingWebSite.Pages.Match
                 {
                     Debug.WriteLine("Error socket");
                 }
-                if(fisher.PersonSexualityId == 2)
+                if (fisher.PersonSexualityId == 2)
                 {
                     sexp = " Gay ";
-                }else if(fisher.PersonSexualityId == 3)
+                }
+                else if (fisher.PersonSexualityId == 3)
                 {
                     sexp = " Bisexual ";
-                }else if(fisher.PersonSexualityId == 1)
+                }
+                else if (fisher.PersonSexualityId == 1)
                 {
                     sexp = " Straight ";
                 }
@@ -61,7 +63,8 @@ namespace CatFishingWebSite.Pages.Match
                 if (fisher.Gender.Contains("M"))
                 {
                     gend = " Male ";
-                }else if (fisher.Gender.Contains("F"))
+                }
+                else if (fisher.Gender.Contains("F"))
                 {
                     gend = "Female";
                 }
@@ -86,7 +89,7 @@ namespace CatFishingWebSite.Pages.Match
 
         public RedirectResult OnPostSkip(int id, int otherId)
         {
-            if (CookieModel.count +1< CookieModel.otherIdsMatched.Count)
+            if (CookieModel.count + 1 < CookieModel.otherIdsMatched.Count)
             {
                 int next = CookieModel.otherIdsMatched[CookieModel.count++].Id;
                 return Redirect("./" + id + "/" + next);

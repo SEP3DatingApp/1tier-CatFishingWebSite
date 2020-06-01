@@ -18,9 +18,6 @@ namespace CatFishingWebSite.Pages
 
     {
         private readonly WebService webService;
-        // private static readonly DummyServer dummy = new DummyServer();
-
-
 
         [BindProperty]
         public User user { get; set; }
@@ -33,7 +30,6 @@ namespace CatFishingWebSite.Pages
         {
             _logger = logger;
             webService = service;
-
         }
 
         public void OnGet()
@@ -45,9 +41,6 @@ namespace CatFishingWebSite.Pages
         }
         public async Task<IActionResult> OnPostLogin()
         {
-
-            Debug.WriteLine("onpost for login");
-            Debug.WriteLine("user name: " + user.Username);
             bool isint = true;
             string un = user.Username;
             string pwd = user.Password;
@@ -75,25 +68,25 @@ namespace CatFishingWebSite.Pages
             try
             {
                 isLogin = webService.IsLogin(un, pwd);
-              
+
             }
             catch (Exception)
             {
                 return RedirectToPage("Error");
             }
-      
+
             if (isLogin)
             {
                 CookieModel.userName = un;
                 CookieModel.isLogin = true;
-               CookieModel.otherIdsMatched = webService.GetFishersList(CookieModel.id);
+                CookieModel.otherIdsMatched = webService.GetFishersList(CookieModel.id);
                 IdOfUser first = CookieModel.otherIdsMatched[0];
                 if (first.Id == 0)
                 {
                     Debug.WriteLine("can't find otherId");
                     return Page();
                 }
-               
+
                 return Redirect("/Match/" + CookieModel.id + "&" + first.Id);
 
             }

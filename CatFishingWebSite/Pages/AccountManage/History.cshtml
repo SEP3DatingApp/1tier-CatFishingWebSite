@@ -1,8 +1,29 @@
 ﻿@page  "{id}"
 @model CatFishingWebSite.Pages.AccountManage.LikeMeBackModel
 @{
-    ViewData["Title"] = "LikeMeBack";
+    ViewData["Title"] = "History";
 }
 
 <h1>History</h1>
+<h4>Who likes me back?</h4>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                OtherId
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.histories)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fisher2Id)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>  <a asp-page="./AccountManage/index" asp-route-id=" @CatFishingWebSite.Model.CookieModel.id">Back to account detail</a> 
+<h4>*Demo for History</h4>
