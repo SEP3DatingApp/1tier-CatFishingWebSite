@@ -39,7 +39,7 @@ namespace CatFishingWebSite.Pages
             CookieModel.userName = null;
             CookieModel.otherIdsMatched = null;
         }
-        public async Task<IActionResult> OnPostLogin()
+        public IActionResult OnPostLogin()
         {
             bool isint = true;
             string un = user.Username;

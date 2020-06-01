@@ -33,7 +33,7 @@ namespace CatFishingWebSite.Pages.AccountManage
             Username = CookieModel.userName;
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
             if (string.IsNullOrEmpty(fisher.Password))
             {

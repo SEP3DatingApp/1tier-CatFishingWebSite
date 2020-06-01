@@ -33,15 +33,8 @@ namespace CatFishingWebSite.Pages.Signup
 
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
-
-
-            //if( ! webService.IsUniqueUserName(fisher.Username))
-            //{
-            //    errorMessage = "Username already exists";
-            //    return Page();
-            //}
 
             if (fisher.Password != passwordAgain)
             {
