@@ -26,6 +26,8 @@ namespace CatFishingWebSite.Pages.Match
 
         public string gend { get; set; }
 
+        public bool isLast { get; set; }
+
         public indexModel(WebService service)
         {
 
@@ -84,19 +86,21 @@ namespace CatFishingWebSite.Pages.Match
         {
             Debug.WriteLine("like a fisher");
             webService.LikeFisher(otherId);
-            return Redirect("./Chat");
+            return Redirect("../Chat");
         }
 
-        public RedirectResult OnPostSkip(int id, int otherId)
+        public IActionResult OnPostSkip(int id, int otherId)
         {
             if (CookieModel.count + 1 < CookieModel.otherIdsMatched.Count)
             {
+
                 int next = CookieModel.otherIdsMatched[CookieModel.count++].Id;
-                return Redirect("./" + id + "/" + next);
+                return Redirect("./" + next);
             }
+            isLast = true;
             Debug.WriteLine("Skip a fisher");
             errorMessage = "It's the last one!";
-            return Redirect("./" + id + "/" + otherId);
+            return Page();
         }
 
 
@@ -107,10 +111,11 @@ namespace CatFishingWebSite.Pages.Match
             {
                 int next = CookieModel.otherIdsMatched[CookieModel.count++].Id;
                 webService.RejectFisher(otherId);
-                return Redirect("./" + id + "/" + next);
+                return Redirect("./" + next);
             }
+            isLast = true;
             errorMessage = "It's the last one!";
-            return Redirect("./" + id + "/" + otherId);
+            return Redirect("./" + otherId);
         }
     }
 }

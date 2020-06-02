@@ -87,7 +87,7 @@ namespace CatFishingWebSite.Pages
                     return Page();
                 }
 
-                return Redirect("/Match/" + CookieModel.id + "&" + first.Id);
+                return Redirect("/Match/" + CookieModel.id + "/" + first.Id);
 
             }
             else

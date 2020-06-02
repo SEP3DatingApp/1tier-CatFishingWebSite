@@ -6,6 +6,15 @@
 
 }
 
+@if (Model.isLast) {
+    <div class="alert alert-warning">
+        <a href="#" class="close" data-dismiss="alert">
+            &times;
+        </a>
+        <strong>Alert！</strong>This is the last one.
+    </div>
+}
+
 <h1>@Model.errorMessage</h1>
 <div class="container">
     <div class="row"><br /></div>

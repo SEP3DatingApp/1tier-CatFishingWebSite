@@ -28,7 +28,7 @@ namespace CatFishingWebSite.Services
         public Sockets sock { get; set; }
         public WebService()
         {
-            sock = new Sockets("192.168.1.144", 5000);
+            sock = new Sockets("localhost", 5000);
         }
         public List<User> getAllUsers()
         {
