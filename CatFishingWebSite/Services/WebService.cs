@@ -28,7 +28,8 @@ namespace CatFishingWebSite.Services
         public Sockets sock { get; set; }
         public WebService()
         {
-            sock = new Sockets("localhost", 5000);
+            //
+            sock = new Sockets("192.168.1.144", 5000);
         }
         public List<User> getAllUsers()
         {
@@ -121,7 +122,7 @@ namespace CatFishingWebSite.Services
 
             JavaScriptSerializer ser = new JavaScriptSerializer();
             List<IdOfUser> records = new List<IdOfUser>(ser.Deserialize<List<IdOfUser>>(json));
-            Debug.WriteLine("List: " + records[0]);
+            Debug.WriteLine("List: " + records);
             return records;
         }
         // like fisher 

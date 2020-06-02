@@ -90,6 +90,7 @@ namespace CatFishingWebSite.Services
             JToken jUser = jObject["user"];
             User user = new User();
             user.Username = (string)jUser["username"];
+            user.Usertype = (string)jUser["role"];
             var token = (string)jUser["token"];
             // decode token
             string jwtEncodedString = token;
@@ -98,6 +99,8 @@ namespace CatFishingWebSite.Services
             CookieModel.token = token;
             CookieModel.id = Convert.ToInt32(value);
             user.id = Convert.ToInt32(value);
+
+
 
             if (user.Username != "")
             {

@@ -7,7 +7,9 @@ namespace CatFishingWebSite.Model
     [Serializable]
     public class User
     {
+
         public int id { get; set; }
+
         [Required]
         [RegularExpression(@"^[^\\/:*;\.\)\(]+$", ErrorMessage = "Username contains ':', '.' ';', '*', '/' or '\' which are not allowed!")]
         [StringLength(20, ErrorMessage = "Max characters for username are 20")]
@@ -17,6 +19,8 @@ namespace CatFishingWebSite.Model
         [RegularExpression(@"^[^\\/:*;\.\)\(]+$", ErrorMessage = "Password contains ':', '.' ';', '*', '/' or '\' which are not allowed!")]
         [StringLength(20, ErrorMessage = "Max characters for password are 20")]
         public string Password { get; set; }
+
+        public string Usertype { get; set; }
 
         public string token { get; set; }
     }
@@ -41,7 +45,7 @@ namespace CatFishingWebSite.Model
         [Range(18, 99)]
         public int Age { get; set; }
 
-        [RegularExpression(@"^[^\\/:*;\.\)\(]+$", ErrorMessage = "Description contains ':', '.' ';', '*', '/' and '\' which are not allowed!")]
+         [RegularExpression(@"^[^\\/:*;\.\)\(]+$", ErrorMessage = "Description contains ':', '.' ';', '*', '/' and '\' which are not allowed!")]
         [StringLength(250, ErrorMessage = "Max characters for description are 250")]
         public string Description { get; set; }
         [DefaultValue(true)]
