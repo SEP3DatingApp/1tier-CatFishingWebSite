@@ -137,6 +137,13 @@ namespace CatFishingWebSite.Services
             string re = sock.Reject(otherid);
             Debug.WriteLine(re);
         }
+        public List<History> GetHistory()
+        {
+            string json = sock.ToString();
+            JavaScriptSerializer ser = new JavaScriptSerializer();
+            List<History> records = new List<History>(ser.Deserialize<List<History>>(json));
+            return records;
+        }
 
         public List<Fisher> GetLikeMeBackList(int id)
         {

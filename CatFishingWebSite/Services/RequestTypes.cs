@@ -17,7 +17,9 @@ namespace CatFishingWebSite.Services
         //Match
         MATCHLIST,
         LIKE,
-        REJECT
+        REJECT,
+        //History
+        HISTORY
         //Chat
 
     }

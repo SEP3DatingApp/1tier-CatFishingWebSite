@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Net.Sockets;
-using System.Threading.Tasks;
 using CatFishingWebSite.Model;
 using CatFishingWebSite.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace CatFishingWebSite.Pages.Match
 {
@@ -100,7 +95,7 @@ namespace CatFishingWebSite.Pages.Match
             isLast = true;
             Debug.WriteLine("Skip a fisher");
             errorMessage = "It's the last one!";
-            return Page();
+            return Redirect("../LastOne/");
         }
 
 
@@ -115,7 +110,7 @@ namespace CatFishingWebSite.Pages.Match
             }
             isLast = true;
             errorMessage = "It's the last one!";
-            return Redirect("./" + otherId);
+            return Redirect("../LastOne/");
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace CatFishingWebSite.Pages.Match
 {
-    public class ChatModel : PageModel
+    public class LastOneModel : PageModel
     {
         public void OnGet()
         {

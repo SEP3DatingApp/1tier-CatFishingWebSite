@@ -156,7 +156,16 @@ namespace CatFishingWebSite.Services
 
             return recvStr;
         }
+        public string GetHis()
+        {
+            Request request = new Request()
+            {
+                Type = RequestTypes.HISTORY.ToString()
+            };
+            string recvStr = SendReceive(request);
 
+            return recvStr;
+        }
         private string SendReceive(Request request)
         {
             var json = System.Text.Json.JsonSerializer.Serialize(request);
@@ -167,6 +176,7 @@ namespace CatFishingWebSite.Services
             Debug.WriteLine(BitConverter.ToString(byData));
             //send
             client.Send(byData);
+            Debug.WriteLine("sended");
             json = Encoding.ASCII.GetString(byData);
             //receive
             string recvStr = "";
@@ -177,5 +187,7 @@ namespace CatFishingWebSite.Services
             Debug.WriteLine("DATA RECEIVED==== " + recvStr);
             return recvStr;
         }
+
+
     }
 }

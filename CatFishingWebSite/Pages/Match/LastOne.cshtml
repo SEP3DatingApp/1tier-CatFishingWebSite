@@ -1,0 +1,10 @@
+﻿@page
+@model CatFishingWebSite.Pages.Match.LastOneModel
+@{
+    ViewData["Title"] = "LastOne";
+}
+
+<h1>This is the last one of fishing</h1>
+<h3>Come back later</h3>
+<a class="navbar-brand" asp-page="/Match/index" asp-route-id="@CatFishingWebSite.Model.CookieModel.id" asp-route-otherId="@CatFishingWebSite.Model.CookieModel.otherIdsMatched[0].Id">See who you missed</a>
+

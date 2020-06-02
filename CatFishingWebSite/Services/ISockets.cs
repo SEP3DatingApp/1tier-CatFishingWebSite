@@ -1,8 +1,4 @@
 ﻿using CatFishingWebSite.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CatFishingWebSite.Services
 {
@@ -25,5 +21,8 @@ namespace CatFishingWebSite.Services
         string Like(int otherId);
 
         string Reject( int otherId);
+
+        //History
+        string GetHis();
     }
 }
