@@ -76,20 +76,18 @@ namespace CatFishingWebSite.Services
             }
 
             string js = @"{""fisher"":" + reply + "}";
-            Debug.WriteLine(js);
             JObject jObject = JObject.Parse(js);
             JToken jFisher = jObject["fisher"];
 
-            fisher.Username = (string)jFisher["username"];
+            fisher.Username = (string)jFisher["Username"];
             fisher.id = id;
-            fisher.IsActive = (bool)jFisher["isActive"];
-            fisher.Email = (string)jFisher["email"];
-            fisher.Gender = (string)jFisher["gender"];
-            fisher.PersonSexualityId = (int)jFisher["personSexualityId"];
-            fisher.FirstName = (string)jFisher["firstName"];
-            fisher.Age = (int)jFisher["age"];
-            fisher.Description = (string)jFisher["description"];
-
+            fisher.IsActive = (bool)jFisher["IsActive"];
+            fisher.Email = (string)jFisher["Email"];
+            fisher.Gender = (string)jFisher["Gender"];
+            fisher.PersonSexualityId = (int)jFisher["PersonSexualityId"];
+            fisher.FirstName = (string)jFisher["FirstName"];
+            fisher.Age = (int)jFisher["Age"];
+            fisher.Description = (string)jFisher["Description"];
 
             return fisher;
         }
@@ -109,34 +107,26 @@ namespace CatFishingWebSite.Services
         public void Logout()
         {
             Debug.WriteLine("user ready to logout");
-            //  sock.Logout();
         }
         //methods for Matching
 
         //get list of ID which match with primeUser
         public List<IdOfUser> GetFishersList(int id)
         {
-
             string json = sock.GetMatchList(id);
-            Debug.WriteLine("WebService getList :     " + json);
-
             JavaScriptSerializer ser = new JavaScriptSerializer();
             List<IdOfUser> records = new List<IdOfUser>(ser.Deserialize<List<IdOfUser>>(json));
-            Debug.WriteLine("List: " + records);
             return records;
         }
         // like fisher 
         public void LikeFisher(int otherId)
         {
             string re = sock.Like(otherId);
-            Debug.WriteLine(re);
-
         }
         //reject fisher
         public void RejectFisher(int otherid)
         {
             string re = sock.Reject(otherid);
-            Debug.WriteLine(re);
         }
         public List<History> GetHistory()
         {

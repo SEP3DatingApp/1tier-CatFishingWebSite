@@ -31,11 +31,9 @@ namespace CatFishingWebSite.Pages.Match
         }
         public void OnGet(int id, int otherId)
         {
-
             if (CookieModel.isLogin)
             {
-                Debug.WriteLine(CookieModel.count);
-                try { fisher = webService.GetFisherByName(CookieModel.otherIdsMatched[CookieModel.count].Id); }
+                try { fisher = webService.GetFisherByName(otherId); }
                 catch (SocketException)
                 {
                     Debug.WriteLine("Error socket");
@@ -79,7 +77,6 @@ namespace CatFishingWebSite.Pages.Match
 
         public RedirectResult OnPostLike(int id, int otherId)
         {
-            Debug.WriteLine("like a fisher");
             webService.LikeFisher(otherId);
             return Redirect("../Chat");
         }
@@ -93,7 +90,6 @@ namespace CatFishingWebSite.Pages.Match
                 return Redirect("./" + next);
             }
             isLast = true;
-            Debug.WriteLine("Skip a fisher");
             errorMessage = "It's the last one!";
             return Redirect("../LastOne/");
         }
@@ -101,7 +97,6 @@ namespace CatFishingWebSite.Pages.Match
 
         public RedirectResult OnPostRefuse(int id, int otherId)
         {
-            Debug.WriteLine("Reject a fisher");
             if (CookieModel.count + 1 < CookieModel.otherIdsMatched.Count)
             {
                 int next = CookieModel.otherIdsMatched[CookieModel.count++].Id;

@@ -16,9 +16,12 @@ namespace CatFishingWebSite.Pages.AccountManage
         public List<History> histories { get; set; }
         public void OnGet()
         {
+            // sprint backlog “Like me back history“ not done
             try
             {
-                histories = webService.GetHistory();
+                //histories = webService.GetHistory();
+                histories = new List<History>();
+                
             }
             catch (SocketException) { }
 

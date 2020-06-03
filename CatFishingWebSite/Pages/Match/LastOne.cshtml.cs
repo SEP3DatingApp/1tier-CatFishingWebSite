@@ -6,7 +6,7 @@ namespace CatFishingWebSite.Pages.Match
     {
         public void OnGet()
         {
-
+            Model.CookieModel.count = 0;
         }
     }
 }

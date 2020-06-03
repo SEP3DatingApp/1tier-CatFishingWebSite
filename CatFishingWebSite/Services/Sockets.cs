@@ -19,14 +19,10 @@ namespace CatFishingWebSite.Services
 
         public Sockets(string ipAdressOfServer, int port)
         {
-
-            Debug.WriteLine("Trying To connect to the server");
             try
             {
                 client.Connect(ipAdressOfServer, port);
                 Debug.WriteLine("Connection is succesfull");
-
-
             }
             catch (Exception)
             {
@@ -85,13 +81,12 @@ namespace CatFishingWebSite.Services
             }
 
             string js = @"{""user"":" + recvStr + "}";
-            Debug.WriteLine(js);
             JObject jObject = JObject.Parse(js);
             JToken jUser = jObject["user"];
             User user = new User();
             user.Username = (string)jUser["username"];
             user.Usertype = (string)jUser["role"];
-            var token = (string)jUser["token"];
+            var token = (string)jUser["Token"];
             // decode token
             string jwtEncodedString = token;
             var t = new JwtSecurityToken(jwtEncodedString: jwtEncodedString);
@@ -99,8 +94,6 @@ namespace CatFishingWebSite.Services
             CookieModel.token = token;
             CookieModel.id = Convert.ToInt32(value);
             user.id = Convert.ToInt32(value);
-
-
 
             if (user.Username != "")
             {
@@ -169,14 +162,9 @@ namespace CatFishingWebSite.Services
         private string SendReceive(Request request)
         {
             var json = System.Text.Json.JsonSerializer.Serialize(request);
-
-            Debug.WriteLine(json);
             byte[] byData = Encoding.ASCII.GetBytes(json + ";");
-
-            Debug.WriteLine(BitConverter.ToString(byData));
             //send
             client.Send(byData);
-            Debug.WriteLine("sended");
             json = Encoding.ASCII.GetString(byData);
             //receive
             string recvStr = "";
@@ -184,7 +172,6 @@ namespace CatFishingWebSite.Services
             int bytes;
             bytes = client.Receive(recvBytes, recvBytes.Length, 0);
             recvStr += Encoding.ASCII.GetString(recvBytes, 0, bytes);
-            Debug.WriteLine("DATA RECEIVED==== " + recvStr);
             return recvStr;
         }
 

@@ -22,7 +22,6 @@ namespace CatFishingWebSite.Pages.AccountManage
 
         public void OnGet(int id)
         {
-            Debug.WriteLine("ID: " + id);
             fisher = webService.GetFisherByName(id);
             CookieModel.id = id;
             Username = CookieModel.userName;
@@ -41,10 +40,8 @@ namespace CatFishingWebSite.Pages.AccountManage
             }
             if (isUpdate)
             {
-                Debug.WriteLine("change successfully");
                 return RedirectToPage("./Success");
             }
-
             return Page();
         }
     }

@@ -73,9 +73,7 @@ namespace CatFishingWebSite.Pages.Signup
 
             if (created)
             {
-                Console.WriteLine("Create a new account");
                 successMessage = "Sign up successfully, back to login page";
-
                 return RedirectToPage("./Success");
             }
             errorMessage = "Username already exists or other error";

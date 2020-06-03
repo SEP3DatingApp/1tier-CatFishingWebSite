@@ -86,9 +86,7 @@ namespace CatFishingWebSite.Pages
                     Debug.WriteLine("can't find otherId");
                     return Page();
                 }
-
                 return Redirect("/Match/" + CookieModel.id + "/" + first.Id);
-
             }
             else
                 errorMessage = "User Name or Password is incorrect";
