@@ -61,7 +61,6 @@ namespace CatFishingWebSite.Services
                 Args = new Fisher { id = id, token = CookieModel.token }
             };
             string recvStr = SendReceive(request);
-
             return recvStr;
         }
 
@@ -106,7 +105,6 @@ namespace CatFishingWebSite.Services
         {
             Request request = new Request()
             {
-
                 Type = RequestTypes.LOGOUT.ToString(),
                 Args = new User { }
             };
@@ -117,7 +115,6 @@ namespace CatFishingWebSite.Services
         {
             Request request = new Request()
             {
-
                 Type = RequestTypes.MATCHLIST.ToString(),
                 Args = new MatchIDs { id = id, token = CookieModel.token }
             };
@@ -165,7 +162,6 @@ namespace CatFishingWebSite.Services
             byte[] byData = Encoding.ASCII.GetBytes(json + ";");
             //send
             client.Send(byData);
-            json = Encoding.ASCII.GetString(byData);
             //receive
             string recvStr = "";
             byte[] recvBytes = new byte[1024];
@@ -174,7 +170,5 @@ namespace CatFishingWebSite.Services
             recvStr += Encoding.ASCII.GetString(recvBytes, 0, bytes);
             return recvStr;
         }
-
-
     }
 }

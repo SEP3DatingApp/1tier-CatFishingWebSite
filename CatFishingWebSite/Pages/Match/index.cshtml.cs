@@ -95,7 +95,7 @@ namespace CatFishingWebSite.Pages.Match
         }
 
 
-        public RedirectResult OnPostRefuse(int id, int otherId)
+        public RedirectResult OnPostRefuse(int otherId)
         {
             if (CookieModel.count + 1 < CookieModel.otherIdsMatched.Count)
             {

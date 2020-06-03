@@ -28,8 +28,8 @@ namespace CatFishingWebSite.Services
         public Sockets sock { get; set; }
         public WebService()
         {
-            //
-            sock = new Sockets("192.168.1.144", 5000);
+            // change "localhost" to server ip
+            sock = new Sockets("localhost", 5000);
         }
         public List<User> getAllUsers()
         {
@@ -107,7 +107,9 @@ namespace CatFishingWebSite.Services
         public void Logout()
         {
             Debug.WriteLine("user ready to logout");
+            //sock.Logout();
         }
+
         //methods for Matching
 
         //get list of ID which match with primeUser

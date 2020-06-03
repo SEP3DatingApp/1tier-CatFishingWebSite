@@ -31,8 +31,6 @@ namespace CatFishingWebSite
             {
                 mc.AddProfile(new AutoMapperProfile());
             });
-            //TODO: (HZ)comment below is for testing web page
-            //services.AddSingleton<IWebService, WebService>();
             WebService service = new WebService();
             services.AddSingleton(service);
            
